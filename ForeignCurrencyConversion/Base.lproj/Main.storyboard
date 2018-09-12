@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,24 +43,71 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ucq-oE-588"/>
                                 </connections>
                             </pickerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y1k-FA-kX5" userLabel="RateTableView">
+                                <rect key="frame" x="30" y="285" width="315" height="332"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="rateTableViewCell" id="QyX-dn-kgt">
+                                        <rect key="frame" x="0.0" y="28" width="315" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QyX-dn-kgt" id="oRY-Bg-LWg">
+                                            <rect key="frame" x="0.0" y="0.0" width="315" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTr-pt-dma">
+                                                    <rect key="frame" x="13" y="13" width="242" height="17.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVH-9b-1k7">
+                                                    <rect key="frame" x="260" y="13" width="42" height="17.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mTr-pt-dma" firstAttribute="top" secondItem="oRY-Bg-LWg" secondAttribute="topMargin" constant="5" id="0Dz-1y-uJb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mTr-pt-dma" secondAttribute="bottom" constant="5" id="2zu-Ce-y7z"/>
+                                                <constraint firstItem="AVH-9b-1k7" firstAttribute="top" secondItem="mTr-pt-dma" secondAttribute="top" id="6b7-WA-Zaj"/>
+                                                <constraint firstItem="AVH-9b-1k7" firstAttribute="bottom" secondItem="mTr-pt-dma" secondAttribute="bottom" id="70C-98-WUn"/>
+                                                <constraint firstItem="mTr-pt-dma" firstAttribute="leading" secondItem="oRY-Bg-LWg" secondAttribute="leadingMargin" constant="5" id="Cxs-PO-wMg"/>
+                                                <constraint firstItem="AVH-9b-1k7" firstAttribute="leading" secondItem="mTr-pt-dma" secondAttribute="trailing" constant="5" id="hep-rP-y7g"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AVH-9b-1k7" secondAttribute="trailing" constant="5" id="xHF-vV-r9p"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="USJ-In-MN7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Nf1-2m-TGY"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sfK-ND-qsh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7A6-lT-mur"/>
+                            <constraint firstItem="y1k-FA-kX5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="9Aw-SQ-dSQ"/>
                             <constraint firstItem="sfK-ND-qsh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dpi-oh-mkO"/>
+                            <constraint firstItem="y1k-FA-kX5" firstAttribute="top" secondItem="sfK-ND-qsh" secondAttribute="bottom" constant="40" id="PEK-o4-64n"/>
                             <constraint firstItem="EQW-47-gRY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="SQf-of-6Ot"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EQW-47-gRY" secondAttribute="trailing" constant="20" id="Xuw-5T-fdZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y1k-FA-kX5" secondAttribute="bottom" constant="50" id="ZzR-ID-kIE"/>
                             <constraint firstItem="sfK-ND-qsh" firstAttribute="top" secondItem="EQW-47-gRY" secondAttribute="bottom" constant="15" id="bKM-2y-7m9"/>
                             <constraint firstItem="EQW-47-gRY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dyw-gb-jpc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y1k-FA-kX5" secondAttribute="trailing" constant="30" id="oMe-2c-3bc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="currencyPickerView" destination="sfK-ND-qsh" id="Xm8-KR-IGa"/>
+                        <outlet property="rateTableView" destination="y1k-FA-kX5" id="vq7-Mg-iGb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="80.799999999999997" y="31.934032983508249"/>
         </scene>
     </scenes>
 </document>

@@ -10,15 +10,17 @@
 #import "APIConnectionService.h"
 #import <SVProgressHUD.h>
 
-@interface MainViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
+@interface MainViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
 // 通貨リスト
 @property (nonatomic) NSArray *currencyInfoList;
 
 // 選択中通貨
-@property (nonatomic) NSArray *selectedCurrency;
+@property (nonatomic) NSMutableArray *selectedCurrency;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *currencyPickerView;
+
+@property (weak, nonatomic) IBOutlet UITableView *rateTableView;
 
 @end
 
@@ -27,7 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // ローディング
     [SVProgressHUD show];
+
+    self.rateTableView.dataSource = self;
+    self.rateTableView.delegate = self;
+    self.selectedCurrency = [NSMutableArray new];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,6 +100,79 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
+    // 選択中の通貨を設定
+    self.selectedCurrency = [NSMutableArray new];
+   
+    NSArray *array = [self.currencyInfoList[row] allValues];
+    
+    for (NSString *key in [array[0] allKeys]) {
+        [self.selectedCurrency addObject:[NSDictionary dictionaryWithObject:array[0][key] forKey:key]];
+    }
+    
+    // 選択中通貨を保存
+    [self setSelectedCurrencyName:[[self.currencyInfoList[row] allKeys] firstObject]];
+    
+    // tableView更新
+    [self.rateTableView reloadData];
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.selectedCurrency count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"rateTableViewCell";
+    // 再利用できるセルがあれば再利用する
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell) {
+        // 再利用できない場合は新規で作成
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:CellIdentifier];
+    }
+    
+    NSDictionary *targetDictionary = self.selectedCurrency[indexPath.row];
+    
+    // 通貨名
+    UILabel *nameLbl = (UILabel *)[cell viewWithTag:1];
+    nameLbl.text = [[targetDictionary allKeys] firstObject];
+    
+    // レート
+    UILabel *rateLbl = (UILabel *)[cell viewWithTag:2];
+    double rate = [[[targetDictionary allValues] firstObject] doubleValue];
+    rateLbl.text = [NSString stringWithFormat:@"%3f", rate];
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+
+- (NSString *)selectedCurrencyName {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    return [ud objectForKey:@"selectedCurrencyNameKey"];
+}
+
+- (void)setSelectedCurrencyName:(NSString *)name {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:name forKey:@"selectedCurrencyNameKey"];
+    [ud synchronize];
+}
+
 
 @end
