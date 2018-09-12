@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "APIConnectionService.h"
+#import <SVProgressHUD.h>
 
 @interface ViewController ()
+
+@property (nonatomic) NSDictionary *currencyInfo;
 
 @end
 
@@ -16,7 +20,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    [SVProgressHUD show];
+    
+    // 通信開始
+    [self fetchForeignCurrencyInfo];
+}
+
+- (void)fetchForeignCurrencyInfo {
+    
+    APIConnectionService *connectionService = [APIConnectionService new];
+    
+    ViewController __weak *weakSelf = self;
+    [connectionService asyncRequest:^void (NSDictionary *contentsList, NSURLResponse *response) {
+        
+        if ([contentsList count]) {
+            weakSelf.currencyInfo = contentsList;
+        } else if (response) {
+            
+        }
+        
+        [SVProgressHUD dismiss];
+    }
+     
+    failure:^(NSError *error) {
+        
+         [SVProgressHUD dismiss];
+    }];
 }
 
 

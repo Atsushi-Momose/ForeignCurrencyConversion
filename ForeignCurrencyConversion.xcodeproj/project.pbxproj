@@ -14,6 +14,7 @@
 		C418E544214899FF00D47CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C418E543214899FF00D47CC4 /* Assets.xcassets */; };
 		C418E547214899FF00D47CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */; };
 		C418E54A214899FF00D47CC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E549214899FF00D47CC4 /* main.m */; };
+		C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C48671172148A3E70008DEDA /* APIConnectionService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		C418E546214899FF00D47CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C418E548214899FF00D47CC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C418E549214899FF00D47CC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C48671162148A3CF0008DEDA /* APIConnectionService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIConnectionService.h; sourceTree = "<group>"; };
+		C48671172148A3E70008DEDA /* APIConnectionService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIConnectionService.m; sourceTree = "<group>"; };
 		FFCAFBBCFF0EC05B59914DA3 /* Pods-ForeignCurrencyConversion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForeignCurrencyConversion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ForeignCurrencyConversion/Pods-ForeignCurrencyConversion.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +89,7 @@
 				C418E53B214899FF00D47CC4 /* AppDelegate.m */,
 				C418E53D214899FF00D47CC4 /* ViewController.h */,
 				C418E53E214899FF00D47CC4 /* ViewController.m */,
+				C48671152148A3600008DEDA /* ConnectionService */,
 				C418E540214899FF00D47CC4 /* Main.storyboard */,
 				C418E543214899FF00D47CC4 /* Assets.xcassets */,
 				C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */,
@@ -93,6 +97,15 @@
 				C418E549214899FF00D47CC4 /* main.m */,
 			);
 			path = ForeignCurrencyConversion;
+			sourceTree = "<group>";
+		};
+		C48671152148A3600008DEDA /* ConnectionService */ = {
+			isa = PBXGroup;
+			children = (
+				C48671162148A3CF0008DEDA /* APIConnectionService.h */,
+				C48671172148A3E70008DEDA /* APIConnectionService.m */,
+			);
+			path = ConnectionService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,15 +182,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ForeignCurrencyConversion/Pods-ForeignCurrencyConversion-resources.sh",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
@@ -191,15 +200,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ForeignCurrencyConversion-checkManifestLockResult.txt",
 			);
@@ -215,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */,
 				C418E53F214899FF00D47CC4 /* ViewController.m in Sources */,
 				C418E54A214899FF00D47CC4 /* main.m in Sources */,
 				C418E53C214899FF00D47CC4 /* AppDelegate.m in Sources */,
