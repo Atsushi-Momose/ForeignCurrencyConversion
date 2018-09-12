@@ -9,14 +9,15 @@
 #import "MainViewController.h"
 #import "APIConnectionService.h"
 #import <SVProgressHUD.h>
+#import "RateConversionViewController.h"
 
 @interface MainViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
 // 通貨リスト
-@property (nonatomic) NSArray *currencyInfoList;
+@property (nonatomic, retain) NSArray *currencyInfoList;
 
 // 選択中通貨
-@property (nonatomic) NSMutableArray *selectedCurrency;
+@property (nonatomic, retain) NSMutableArray *selectedCurrency;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *currencyPickerView;
 
@@ -192,4 +193,14 @@
 - (IBAction)upDateButtonAction:(id)sender {
     [self fetchForeignCurrencyInfo];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"rcSegue"]) {
+        //遷移先のViewController
+        RateConversionViewController *vc = (RateConversionViewController *)[segue destinationViewController];
+        
+        vc.selectedCurrency = self.selectedCurrency;
+    }
+}
+
 @end
