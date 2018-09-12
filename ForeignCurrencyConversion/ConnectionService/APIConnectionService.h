@@ -10,6 +10,6 @@
 
 //- (void) fetchContentnsInfo:(void(^)(NSDictionary *result, NSURLResponse *response, NSError *error))completionhandler;
 
-- (void)asyncRequest:(void(^)(NSDictionary *result, NSURLResponse *response))completionhandler failure:(void(^)(NSError *))failure;
+- (void)asyncRequest:(void(^)(NSArray *result, NSURLResponse *response))completionhandler failure:(void(^)(NSError *))failure;
 
 @end

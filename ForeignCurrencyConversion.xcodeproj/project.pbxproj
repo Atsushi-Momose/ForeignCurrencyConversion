@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		99D70DDD2E58C7E61FEC90CA /* libPods-ForeignCurrencyConversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D080C4C1456F42344798602 /* libPods-ForeignCurrencyConversion.a */; };
 		C418E53C214899FF00D47CC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E53B214899FF00D47CC4 /* AppDelegate.m */; };
-		C418E53F214899FF00D47CC4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E53E214899FF00D47CC4 /* ViewController.m */; };
+		C418E53F214899FF00D47CC4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E53E214899FF00D47CC4 /* MainViewController.m */; };
 		C418E542214899FF00D47CC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E540214899FF00D47CC4 /* Main.storyboard */; };
 		C418E544214899FF00D47CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C418E543214899FF00D47CC4 /* Assets.xcassets */; };
 		C418E547214899FF00D47CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */; };
@@ -23,8 +23,8 @@
 		C418E537214899FF00D47CC4 /* ForeignCurrencyConversion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForeignCurrencyConversion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C418E53A214899FF00D47CC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C418E53B214899FF00D47CC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C418E53D214899FF00D47CC4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C418E53E214899FF00D47CC4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C418E53D214899FF00D47CC4 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		C418E53E214899FF00D47CC4 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C418E541214899FF00D47CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C418E543214899FF00D47CC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C418E546214899FF00D47CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,8 +87,8 @@
 			children = (
 				C418E53A214899FF00D47CC4 /* AppDelegate.h */,
 				C418E53B214899FF00D47CC4 /* AppDelegate.m */,
-				C418E53D214899FF00D47CC4 /* ViewController.h */,
-				C418E53E214899FF00D47CC4 /* ViewController.m */,
+				C418E53D214899FF00D47CC4 /* MainViewController.h */,
+				C418E53E214899FF00D47CC4 /* MainViewController.m */,
 				C48671152148A3600008DEDA /* ConnectionService */,
 				C418E540214899FF00D47CC4 /* Main.storyboard */,
 				C418E543214899FF00D47CC4 /* Assets.xcassets */,
@@ -221,7 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */,
-				C418E53F214899FF00D47CC4 /* ViewController.m in Sources */,
+				C418E53F214899FF00D47CC4 /* MainViewController.m in Sources */,
 				C418E54A214899FF00D47CC4 /* main.m in Sources */,
 				C418E53C214899FF00D47CC4 /* AppDelegate.m in Sources */,
 			);
