@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *currencyPickerView;
 
 @property (weak, nonatomic) IBOutlet UITableView *rateTableView;
+@property (weak, nonatomic) IBOutlet UILabel *lastModifiedLabel;
 
 @end
 
@@ -37,16 +38,14 @@
     self.selectedCurrency = [NSMutableArray new];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     // 通信開始
     [self fetchForeignCurrencyInfo];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     // 選択中の通過に目印をつける
@@ -63,7 +62,12 @@
         if ([resultList count]) {
             weakSelf.currencyInfoList = resultList;
             dispatch_sync(dispatch_get_main_queue(), ^{
-                 [weakSelf.currencyPickerView reloadAllComponents];
+                
+                // 通貨ピッカー更新
+                [weakSelf.currencyPickerView reloadAllComponents];
+                
+                // 最終更新日更新
+                [self refreshLastModifiedLabel];
             });
         } else if (response) {
             
@@ -78,13 +82,22 @@
     }];
 }
 
+- (void)refreshLastModifiedLabel {
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
+    [format setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    
+    NSString *StTime = [format stringFromDate:[NSDate date]];
+    
+    self.lastModifiedLabel.text = [NSString stringWithFormat:@"最終更新日時：%@", StTime];
+}
 // 列数
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
 // 行数
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
     if ([self.currencyInfoList count]) {
         return [self.currencyInfoList count];
@@ -116,14 +129,11 @@
     [self.rateTableView reloadData];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.selectedCurrency count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"rateTableViewCell";
     // 再利用できるセルがあれば再利用する
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -148,13 +158,11 @@
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
