@@ -23,16 +23,16 @@
 @property (weak, nonatomic) IBOutlet UITableView *rateTableView;
 @property (weak, nonatomic) IBOutlet UILabel *lastModifiedLabel;
 
+- (IBAction)upDateButtonAction:(id)sender;
+
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-
-    // ローディング
-    [SVProgressHUD show];
-
+    
     self.rateTableView.dataSource = self;
     self.rateTableView.delegate = self;
     self.selectedCurrency = [NSMutableArray new];
@@ -54,6 +54,9 @@
 
 - (void)fetchForeignCurrencyInfo {
     
+    // ローディング
+    [SVProgressHUD show];
+    
     APIConnectionService *connectionService = [APIConnectionService new];
     
     MainViewController __weak *weakSelf = self;
@@ -68,6 +71,9 @@
                 
                 // 最終更新日更新
                 [self refreshLastModifiedLabel];
+                
+                [self.rateTableView reloadData];
+                
             });
         } else if (response) {
             
@@ -91,6 +97,7 @@
     
     self.lastModifiedLabel.text = [NSString stringWithFormat:@"最終更新日時：%@", StTime];
 }
+
 // 列数
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
@@ -182,5 +189,7 @@
     [ud synchronize];
 }
 
-
+- (IBAction)upDateButtonAction:(id)sender {
+    [self fetchForeignCurrencyInfo];
+}
 @end
