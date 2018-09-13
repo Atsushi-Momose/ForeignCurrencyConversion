@@ -190,10 +190,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ForeignCurrencyConversion/Pods-ForeignCurrencyConversion-resources.sh",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/SimpleNumpad/Lib/IDPNumpadViewController.storyboard",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IDPNumpadViewController.storyboardc",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
