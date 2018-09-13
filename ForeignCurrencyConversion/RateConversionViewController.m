@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "RateConversionViewController.h"
-#import <SimpleNumpad/SimpleNumpad.h>
+#import <MMNumberKeyboard.h>
 
-@interface RateConversionViewController() <IDPNumpadViewControllerDelegate>
-
-@property (nonatomic) IDPNumpadViewController *numpadViewController;
+@interface RateConversionViewController() <MMNumberKeyboardDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *keyBoardView;
 
 @end
 
@@ -24,11 +24,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
-    self.numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleCalcApp inputStyle:IDPNumpadViewControllerInputStyleNumber showNumberDisplay:false];
-    self.numpadViewController.delegate = self;
-    
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -38,8 +36,20 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // キーパッドを表示
-    [self presentViewController:self.numpadViewController animated:true completion:^{}];
+    MMNumberKeyboard *keyboard = [[MMNumberKeyboard alloc] initWithFrame: _keyBoardView.frame];
+    keyboard.allowsDecimalPoint = YES;
+    keyboard.delegate = self;
+    
+    // Configure an example UITextField.
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectZero];
+    textField.inputView = keyboard;
+    
+    [self.view addSubview:keyboard];
+    
+}
+
+- (IBAction)backButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

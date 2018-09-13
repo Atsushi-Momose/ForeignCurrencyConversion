@@ -1,28 +1,20 @@
 PODS:
-  - SimpleNumpad (0.8.1)
+  - MMNumberKeyboard (0.2.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
-  - SimpleNumpad (from `https://github.com/notoroid/SimpleNumpad.git`)
+  - MMNumberKeyboard
   - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - MMNumberKeyboard
     - SVProgressHUD
 
-EXTERNAL SOURCES:
-  SimpleNumpad:
-    :git: https://github.com/notoroid/SimpleNumpad.git
-
-CHECKOUT OPTIONS:
-  SimpleNumpad:
-    :commit: 76338b6dd3a34075e0af67755111502669f03f1d
-    :git: https://github.com/notoroid/SimpleNumpad.git
-
 SPEC CHECKSUMS:
-  SimpleNumpad: 6873678e0d9975d772e23bd5f482ae2c101bc857
+  MMNumberKeyboard: d7bd1646f62e7e0300eafd3e938899526d8d1d38
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 518e00a4d8fa7c125139a383bea6d94cbd7c75ab
+PODFILE CHECKSUM: b2c6411147e3fe9add7cac0ca51ba78967fe89d9
 
 COCOAPODS: 1.5.3

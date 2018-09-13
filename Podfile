@@ -3,7 +3,7 @@
 
 target 'ForeignCurrencyConversion' do
 pod 'SVProgressHUD'
-pod 'SimpleNumpad', :git => 'https://github.com/notoroid/SimpleNumpad.git'
+pod 'MMNumberKeyboard'
 
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
