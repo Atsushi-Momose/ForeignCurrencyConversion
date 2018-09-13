@@ -96,7 +96,8 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
             if( [obj isKindOfClass:[UILabel class]] ){
                 UILabel *label = obj;
                 if( [label.text isEqualToString:numberName] ){
-                    _replacedNumber[numberName] = newNumber;
+                    
+                    self->_replacedNumber[numberName] = newNumber;
                     label.text = newNumber;
                     *stop  = YES;
                 }
@@ -447,55 +448,55 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
         
         CGPoint location = [[touches anyObject] locationInView:view.superview];
         if(CGRectContainsPoint(frame, location)){
-            if(_button0View == view){
-                if( [self canInsertZeroWithText:_text]){
-                    _text = [_text stringByAppendingString:@"0"];
-                    [_delegate numpadViewDidUpdate:self];
+            if(self->_button0View == view){
+                if( [self canInsertZeroWithText:self->_text]){
+                    self->_text = [self->_text stringByAppendingString:@"0"];
+                    [self->_delegate numpadViewDidUpdate:self];
                 }
-            }else if(_button00View == view && _button00View.hidden != YES){
-                if( [self canInsertZeroWithText:_text]){
-                    _text = [_text stringByAppendingString:@"00"];
-                    [_delegate numpadViewDidUpdate:self];
+            }else if(self->_button00View == view && self->_button00View.hidden != YES){
+                if( [self canInsertZeroWithText:self->_text]){
+                    self->_text = [self->_text stringByAppendingString:@"00"];
+                    [self->_delegate numpadViewDidUpdate:self];
                 }
-            }else if(_button1View == view){
-                _text = [_text stringByAppendingString:@"1"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_button2View == view){
-                _text = [_text stringByAppendingString:@"2"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_button3View == view){
-                _text = [_text stringByAppendingString:@"3"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_button4View == view){
-                _text = [_text stringByAppendingString:@"4"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_button5View == view){
-                _text = [_text stringByAppendingString:@"5"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_button6View == view){
-                _text = [_text stringByAppendingString:@"6"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_button7View == view){
-                _text = [_text stringByAppendingString:@"7"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_button8View == view){
-                _text = [_text stringByAppendingString:@"8"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_button9View == view){
-                _text = [_text stringByAppendingString:@"9"];
-                [_delegate numpadViewDidUpdate:self];
-            }else if(_buttonEnterView == view){
-                [_delegate numpadViewDidEnter:self];
-            }else if(_buttonBackspaceView == view){
-                if( _text.length > 0 ){
-                    _text = [_text substringToIndex:_text.length-1];
-                    [_delegate numpadViewDidUpdate:self];
+            }else if(self->_button1View == view){
+                self->_text = [self->_text stringByAppendingString:@"1"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_button2View == view){
+                self->_text = [self->_text stringByAppendingString:@"2"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_button3View == view){
+                self->_text = [self->_text stringByAppendingString:@"3"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_button4View == view){
+                self->_text = [self->_text stringByAppendingString:@"4"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_button5View == view){
+                self->_text = [self->_text stringByAppendingString:@"5"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_button6View == view){
+                self->_text = [self->_text stringByAppendingString:@"6"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_button7View == view){
+                self->_text = [self->_text stringByAppendingString:@"7"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_button8View == view){
+                self->_text = [self->_text stringByAppendingString:@"8"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_button9View == view){
+                self->_text = [self->_text stringByAppendingString:@"9"];
+                [self->_delegate numpadViewDidUpdate:self];
+            }else if(self->_buttonEnterView == view){
+                [self->_delegate numpadViewDidEnter:self];
+            }else if(self->_buttonBackspaceView == view){
+                if( self->_text.length > 0 ){
+                    self->_text = [self->_text substringToIndex:self->_text.length-1];
+                    [self->_delegate numpadViewDidUpdate:self];
                 }
-            }else if(_buttonDotView == view && _buttonDotView.hidden != YES){
-                NSRange range = [_text rangeOfString:@"."];
+            }else if(self->_buttonDotView == view && self->_buttonDotView.hidden != YES){
+                NSRange range = [self->_text rangeOfString:@"."];
                 if( range.location == NSNotFound ){
-                    _text = [_text stringByAppendingString:@"."];
-                    [_delegate numpadViewDidUpdate:self];
+                    self->_text = [self->_text stringByAppendingString:@"."];
+                    [self->_delegate numpadViewDidUpdate:self];
                 }
             }
             

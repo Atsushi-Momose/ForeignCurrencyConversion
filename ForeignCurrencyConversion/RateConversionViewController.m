@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "RateConversionViewController.h"
+#import <SimpleNumpad/SimpleNumpad.h>
 
+@interface RateConversionViewController() <IDPNumpadViewControllerDelegate>
 
-@interface RateConversionViewController()
+@property (nonatomic) IDPNumpadViewController *numpadViewController;
 
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 
 @end
 
@@ -22,7 +25,8 @@
     
     [super viewDidLoad];
     
-    //self.selectedCurrency = [NSMutableArray new];
+    self.numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleCalcApp inputStyle:IDPNumpadViewControllerInputStyleNumber showNumberDisplay:false];
+    self.numpadViewController.delegate = self;
     
 }
 
@@ -33,6 +37,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    // キーパッドを表示
+    [self presentViewController:self.numpadViewController animated:true completion:^{}];
 }
 
 @end

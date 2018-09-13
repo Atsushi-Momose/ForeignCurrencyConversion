@@ -165,7 +165,6 @@
                     <view key="view" contentMode="scaleToFill" id="WVi-Th-tF5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="piL-Q3-F9w"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xue-Hb-xQe"/>
