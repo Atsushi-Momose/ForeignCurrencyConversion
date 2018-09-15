@@ -18,6 +18,7 @@
 		C418E54A214899FF00D47CC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E549214899FF00D47CC4 /* main.m */; };
 		C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C48671172148A3E70008DEDA /* APIConnectionService.m */; };
 		C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49F3E7321495B110033AEB9 /* RateConversionViewController.m */; };
+		C4FAB730214D4B2A002B99EA /* UserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB72F214D4B2A002B99EA /* UserDefault.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		C48671172148A3E70008DEDA /* APIConnectionService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIConnectionService.m; sourceTree = "<group>"; };
 		C49F3E7221495AAF0033AEB9 /* RateConversionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateConversionViewController.h; sourceTree = "<group>"; };
 		C49F3E7321495B110033AEB9 /* RateConversionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateConversionViewController.m; sourceTree = "<group>"; };
+		C4FAB72E214D4B2A002B99EA /* UserDefault.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefault.h; sourceTree = "<group>"; };
+		C4FAB72F214D4B2A002B99EA /* UserDefault.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDefault.m; sourceTree = "<group>"; };
 		FFCAFBBCFF0EC05B59914DA3 /* Pods-ForeignCurrencyConversion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForeignCurrencyConversion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ForeignCurrencyConversion/Pods-ForeignCurrencyConversion.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +80,8 @@
 			children = (
 				C4070C27214CA7F1001E9A7E /* UIStoryBoard.h */,
 				C4070C24214CA7A1001E9A7E /* UIStoryBoard.m */,
+				C4FAB72E214D4B2A002B99EA /* UserDefault.h */,
+				C4FAB72F214D4B2A002B99EA /* UserDefault.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			files = (
 				C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */,
 				C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */,
+				C4FAB730214D4B2A002B99EA /* UserDefault.m in Sources */,
 				C4070C25214CA7A1001E9A7E /* UIStoryBoard.m in Sources */,
 				C418E53F214899FF00D47CC4 /* RateViewController.m in Sources */,
 				C418E54A214899FF00D47CC4 /* main.m in Sources */,
@@ -403,7 +409,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7PTVQRPRL6;
 				INFOPLIST_FILE = ForeignCurrencyConversion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mmsc.ForeignCurrencyConversion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -417,7 +425,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7PTVQRPRL6;
 				INFOPLIST_FILE = ForeignCurrencyConversion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mmsc.ForeignCurrencyConversion;
 				PRODUCT_NAME = "$(TARGET_NAME)";

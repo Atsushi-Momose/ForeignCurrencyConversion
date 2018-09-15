@@ -9,8 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "RateConversionViewController.h"
 #import <MMNumberKeyboard.h>
+#import "UserDefault.h"
 
 @interface RateConversionViewController() <MMNumberKeyboardDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (nonatomic, retain) NSDictionary *targetCurrencyInfo; // 換算元の通貨
+@property (nonatomic, retain) NSString *convertCurrency; // 換算先の通過
+
 @property (weak, nonatomic) IBOutlet UIView *keyBoardView;
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *currencySelectCollectionView;
@@ -47,8 +52,6 @@
     keyboard.allowsDecimalPoint = YES;
     keyboard.delegate = self;
     [self.view addSubview:keyboard];
-    
-    [self becomeFirstResponder];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -63,13 +66,19 @@
 {
     UICollectionViewCell *cell = [UICollectionViewCell new];
     
+    NSDictionary *targetDictionary = _currencyInfoList[indexPath.row];
+    
     if (collectionView == _currencySelectCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"selectCollectionCell" forIndexPath:indexPath];
+        
+        // 前の画面で選択中の通貨かつ本画面のcurrencySelectCollectionViewで通貨を選択していない場合
+        if ([[[targetDictionary allKeys] firstObject] isEqualToString:[UserDefault selectedCurrencyName]] && ![_targetCurrencyInfo count]) {
+            [cell setSelected:YES];
+       }
+        
     } else if (collectionView == _convertCurrencyCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"convertCollectionCell" forIndexPath:indexPath];
     }
-    
-    NSDictionary *targetDictionary = _currencyInfoList[indexPath.row];
     
     // 通貨名
     UILabel *nameLbl = (UILabel *)[cell.contentView viewWithTag:1];
@@ -80,19 +89,55 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    // 選択されたセルを取得
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    
-    //    cell.backgroundColor = [cell isSelected] ? [cell setBackgroundColor:[UIColor blueColor]] : [cell setBackgroundColor:[UIColor whiteColor]];
-    
     if (collectionView == _currencySelectCollectionView) { // 換算元
         
+        NSDictionary *targetDictionary = _currencyInfoList[indexPath.row];
         
+        if (![[[targetDictionary allKeys] firstObject] isEqualToString:[[_targetCurrencyInfo allKeys] firstObject]]) {
+            _resultLabel.text = nil;
+        }
         
+        _targetCurrencyInfo = targetDictionary;
         
+        // 前の画面で選択した通貨のハイライトをここで戻す
+        if (![[[targetDictionary allKeys] firstObject] isEqualToString:[UserDefault selectedCurrencyName]] && [_targetCurrencyInfo count]) {
+            NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
+            [_currencySelectCollectionView reloadItemsAtIndexPaths:@[index]];
+        }
     } else { // 換算先
         
+         NSDictionary *targetDictionary = _currencyInfoList[indexPath.row];
+        _convertCurrency = [[targetDictionary allKeys] firstObject];
+        
+        if (![[[targetDictionary allKeys] firstObject] isEqualToString:[[_targetCurrencyInfo allKeys] firstObject]]) {
+            _resultLabel.text = nil;
+        }
     }
+    
+    // 換算
+    [self rateConvertingCalculation];
+}
+
+- (void)rateConvertingCalculation {
+    
+    if (_inputTextField.text.length == 0 || ![_targetCurrencyInfo count] || _convertCurrency.length == 0) {
+        return;
+    }
+    // 同じ通貨を選択した場合
+    if ([[[_targetCurrencyInfo allKeys] firstObject] isEqualToString:_convertCurrency]) {
+        _resultLabel.text = _inputTextField.text;
+        return;
+    }
+
+    // 換算先通貨のレート
+    double convertCurrencyValue = [[[_targetCurrencyInfo allValues][0] valueForKey:_convertCurrency] doubleValue];
+    
+    // 入力値
+    double inputValue = _inputTextField.text.doubleValue;
+
+    double result = convertCurrencyValue * inputValue;
+    
+    _resultLabel.text = [NSString stringWithFormat:@"%3f", result];
 }
 
 - (BOOL)canBecomeFirstResponder {
@@ -100,14 +145,17 @@
 }
 
 - (BOOL)numberKeyboardShouldReturn:(MMNumberKeyboard *)numberKeyboard {
+    [_inputTextField addTarget:self action:@selector(didChangeTextField) forControlEvents:UIControlEventEditingChanged];
     return YES;
 }
 
 - (BOOL)numberKeyboard:(MMNumberKeyboard *)numberKeyboard shouldInsertText:(NSString *)text {
+    [_inputTextField addTarget:self action:@selector(didChangeTextField) forControlEvents:UIControlEventEditingChanged];
     return YES;
 }
 
 - (BOOL)numberKeyboardShouldDeleteBackward:(MMNumberKeyboard *)numberKeyboard {
+    [_inputTextField addTarget:self action:@selector(didChangeTextField) forControlEvents:UIControlEventEditingDidEnd];
     return YES;
 }
 
@@ -115,6 +163,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)didChangeTextField {
+    if (![_inputTextField.text length]) {
+        _resultLabel.text = nil;
+    }
+    
+    [self rateConvertingCalculation];
+}
 
 @end
 

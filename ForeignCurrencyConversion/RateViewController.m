@@ -11,10 +11,11 @@
 #import <SVProgressHUD.h>
 #import "RateConversionViewController.h"
 #import "UIStoryBoard.h"
+#import "UserDefault.h"
 
 @interface RateViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, retain) NSArray *currencyInfoList; // 通貨リスト
+@property (nonatomic, retain) NSMutableArray *currencyInfoList; // 通貨リスト
 @property (nonatomic, retain) NSMutableArray *selectedCurrency; // 選択中通貨
 
 @property (weak, nonatomic) IBOutlet UIPickerView *currencyPickerView;
@@ -32,6 +33,7 @@
     
     [super viewDidLoad];
     
+    _currencyInfoList = [NSMutableArray new];
     _selectedCurrency = [NSMutableArray new];
 }
 
@@ -57,20 +59,13 @@
     APIConnectionService *connectionService = [APIConnectionService new];
     
     RateViewController __weak *weakSelf = self;
-    [connectionService asyncRequest:^void (NSArray *resultList, NSURLResponse *response) {
+    [connectionService asyncRequest:^void (NSMutableArray *resultList, NSURLResponse *response) {
         
         if ([resultList count]) {
             weakSelf.currencyInfoList = resultList;
             dispatch_sync(dispatch_get_main_queue(), ^{
-                
-                // 通貨ピッカー更新
-                [weakSelf.currencyPickerView reloadAllComponents];
-                
-                // 最終更新日更新
-                [self refreshLastModifiedLabel];
-                
-                [self.rateTableView reloadData];
-                
+                // 画面表示更新
+                [weakSelf refresh];
             });
         } else if (response) {
             
@@ -85,7 +80,23 @@
     }];
 }
 
-- (void)refreshLastModifiedLabel {
+- (void)refresh {
+    // 最終更新日更新
+    [self updateLastModifiedLabel];
+    
+    // 選択中の通貨情報を通貨リストの先頭に移動
+    [self sortCurrencyInfoList];
+    
+    // 通貨ピッカー更新
+    [self.currencyPickerView reloadAllComponents];
+    
+    // pickerViewを選択状態に
+    [_currencyPickerView selectRow:0 inComponent:0 animated:NO];
+    
+    [self.rateTableView reloadData];
+}
+
+- (void)updateLastModifiedLabel {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
     [format setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
@@ -127,7 +138,7 @@
     }
     
     // 選択中通貨を保存
-    [self setSelectedCurrencyName:[[_currencyInfoList[row] allKeys] firstObject]];
+    [UserDefault setSelectedCurrencyName:[[_currencyInfoList[row] allKeys] firstObject]];
     
     // tableView更新
     [_rateTableView reloadData];
@@ -157,7 +168,7 @@
     // レート
     UILabel *rateLbl = (UILabel *)[cell viewWithTag:2];
     double rate = [[[targetDictionary allValues] firstObject] doubleValue];
-    rateLbl.text = [NSString stringWithFormat:@"%3f", rate];
+    rateLbl.text = [NSString stringWithFormat:@"%2f", rate];
     
     return cell;
 }
@@ -175,35 +186,52 @@
     return 44;
 }
 
-- (NSString *)selectedCurrencyName {
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    return [ud objectForKey:@"selectedCurrencyNameKey"];
-}
-
-- (void)setSelectedCurrencyName:(NSString *)name {
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:name forKey:@"selectedCurrencyNameKey"];
-    [ud synchronize];
-}
-
 - (IBAction)upDateButtonAction:(id)sender {
     [self fetchForeignCurrencyInfo];
 }
 
 - (IBAction)nextButtonAction:(id)sender {
     RateConversionViewController *vc = [UIStoryBoard RateConversion];
-    vc.currencyInfoList = _currencyInfoList;
+    vc.currencyInfoList = [self sortCurrencyInfoList];
     vc.selectedCurrency = _selectedCurrency;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([[segue identifier] isEqualToString:@"rcSegue"]) {
-//        //遷移先のViewController
-//        RateConversionViewController *vc = (RateConversionViewController *)[segue destinationViewController];
-//
-//        vc.selectedCurrency = _selectedCurrency;
-//    }
-//}
+// 通貨リストの先頭に選択中の通貨を移動
+- (NSArray *)sortCurrencyInfoList {
+    
+    // 選択中の通貨が存在する場合
+    NSString *savedCurrency = [UserDefault selectedCurrencyName];
+    if ([savedCurrency length]) {
+        
+        // 通貨情報リストから該当データを取得
+        _selectedCurrency = [NSMutableArray new];
+        
+        NSDictionary *sortTargetInfo = [NSDictionary new];
+        
+        int i = 0;
+        for (NSDictionary *dic in _currencyInfoList) {
+            if ([[[dic allKeys] firstObject] isEqualToString:savedCurrency]) {
+                
+                sortTargetInfo = dic;
+                
+                NSArray *array = [dic allValues];
+                
+                for (NSString *key in array[0]) {
+                    [_selectedCurrency addObject:[NSDictionary dictionaryWithObject:array[0][key] forKey:key]];
+                }
+                break;
+            }
+            i++;
+        }
+        // 先頭に移動
+        if ([sortTargetInfo count]) {
+            [_currencyInfoList removeObjectAtIndex:i];
+            [_currencyInfoList insertObject:sortTargetInfo atIndex:0];
+        }
+    }
+    
+    return _currencyInfoList;
+}
 
 @end

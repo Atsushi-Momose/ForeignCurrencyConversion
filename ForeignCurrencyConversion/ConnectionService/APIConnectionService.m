@@ -22,7 +22,7 @@
 @implementation APIConnectionService
 
 // 外部サーバから情報を取得
-- (void)asyncRequest:(void(^)(NSArray *result, NSURLResponse *response))completionhandler failure:(void(^)(NSError *))failure
+- (void)asyncRequest:(void(^)(NSMutableArray *result, NSURLResponse *response))completionhandler failure:(void(^)(NSError *))failure
 {
     NSURLSession *session = [NSURLSession sharedSession];
     
@@ -66,8 +66,6 @@
                                       for (NSString *str in dic) {
                                           [result addObject:[NSDictionary dictionaryWithObject:dic[str] forKey:str]];
                                       }
-                                      
-                                      
                                       
                                       // JSONエラーチェック
                                       if (jsonError != nil) {
