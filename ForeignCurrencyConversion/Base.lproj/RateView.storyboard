@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Rate View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RateViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,7 +117,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="GPB-W9-KKW" kind="show" identifier="rcSegue" id="90K-ek-sz9"/>
+                                    <action selector="nextButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xU5-fh-q2G"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -157,59 +157,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="215" y="32"/>
-        </scene>
-        <!--RateConversionViewController-->
-        <scene sceneID="UdV-Ri-fFY">
-            <objects>
-                <viewController title="RateConversionViewController" automaticallyAdjustsScrollViewInsets="NO" id="GPB-W9-KKW" customClass="RateConversionViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WVi-Th-tF5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyD-rK-uyP">
-                                <rect key="frame" x="0.0" y="374" width="375" height="283"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="283" id="UlO-yP-ywA"/>
-                                </constraints>
-                            </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hrn-hZ-MrJ">
-                                <rect key="frame" x="40" y="114" width="295" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="xmA-KG-yfI"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="nyD-rK-uyP" firstAttribute="top" secondItem="hrn-hZ-MrJ" secondAttribute="bottom" constant="210" id="Ham-d9-37W"/>
-                            <constraint firstItem="piL-Q3-F9w" firstAttribute="trailing" secondItem="nyD-rK-uyP" secondAttribute="trailing" id="Jqu-0A-dw2"/>
-                            <constraint firstItem="nyD-rK-uyP" firstAttribute="top" secondItem="piL-Q3-F9w" secondAttribute="top" constant="310" id="MvK-jF-fsb"/>
-                            <constraint firstItem="piL-Q3-F9w" firstAttribute="bottom" secondItem="nyD-rK-uyP" secondAttribute="bottom" constant="10" id="NyY-H3-KNA"/>
-                            <constraint firstItem="piL-Q3-F9w" firstAttribute="trailing" secondItem="hrn-hZ-MrJ" secondAttribute="trailing" constant="40" id="SVB-Wk-PWV"/>
-                            <constraint firstItem="nyD-rK-uyP" firstAttribute="leading" secondItem="piL-Q3-F9w" secondAttribute="leading" id="pmI-pa-743"/>
-                            <constraint firstItem="hrn-hZ-MrJ" firstAttribute="leading" secondItem="piL-Q3-F9w" secondAttribute="leading" constant="40" id="qew-ae-plB"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="piL-Q3-F9w"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="レート換算" id="E7i-Sa-wGX">
-                        <barButtonItem key="leftBarButtonItem" title="＜" id="YQq-31-HAn">
-                            <connections>
-                                <action selector="backButtonAction:" destination="GPB-W9-KKW" id="cMp-sN-DW2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="inputTextField" destination="hrn-hZ-MrJ" id="1zH-tE-tdP"/>
-                        <outlet property="keyBoardView" destination="nyD-rK-uyP" id="yGO-EW-UdE"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="276-DN-1vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1076" y="31.934032983508249"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lfh-4o-v9q">

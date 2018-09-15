@@ -1,17 +1,18 @@
 //
-//  MainViewController.m
+//  RateViewController.m
 //  ForeignCurrencyConversion
 //
 //  Created by mmsc on 2018/09/12.
 //  Copyright © 2018年 mmsc. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "RateViewController.h"
 #import "APIConnectionService.h"
 #import <SVProgressHUD.h>
 #import "RateConversionViewController.h"
+#import "UIStoryBoard.h"
 
-@interface MainViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
+@interface RateViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) NSArray *currencyInfoList; // 通貨リスト
 @property (nonatomic, retain) NSMutableArray *selectedCurrency; // 選択中通貨
@@ -21,18 +22,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastModifiedLabel;
 
 - (IBAction)upDateButtonAction:(id)sender;
+- (IBAction)nextButtonAction:(id)sender;
 
 @end
 
-@implementation MainViewController
+@implementation RateViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    self.rateTableView.dataSource = self;
-    self.rateTableView.delegate = self;
-    self.selectedCurrency = [NSMutableArray new];
+    _rateTableView.dataSource = self;
+    _rateTableView.delegate = self;
+    _selectedCurrency = [NSMutableArray new];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,7 +48,7 @@
     [super viewDidAppear:animated];
     
     // 選択中の通過に目印をつける
-    self.currencyPickerView.showsSelectionIndicator = YES;
+    _currencyPickerView.showsSelectionIndicator = YES;
 }
 
 - (void)fetchForeignCurrencyInfo {
@@ -56,7 +58,7 @@
     
     APIConnectionService *connectionService = [APIConnectionService new];
     
-    MainViewController __weak *weakSelf = self;
+    RateViewController __weak *weakSelf = self;
     [connectionService asyncRequest:^void (NSArray *resultList, NSURLResponse *response) {
         
         if ([resultList count]) {
@@ -92,7 +94,7 @@
     
     NSString *StTime = [format stringFromDate:[NSDate date]];
     
-    self.lastModifiedLabel.text = [NSString stringWithFormat:@"最終更新日時：%@", StTime];
+    _lastModifiedLabel.text = [NSString stringWithFormat:@"最終更新日時：%@", StTime];
 }
 
 // 列数
@@ -103,38 +105,38 @@
 // 行数
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
-    if ([self.currencyInfoList count]) {
-        return [self.currencyInfoList count];
+    if ([_currencyInfoList count]) {
+        return [_currencyInfoList count];
     }
     return 0;
 }
 
 // 内容
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSDictionary *currencyInfo = self.currencyInfoList[row];
+    NSDictionary *currencyInfo = _currencyInfoList[row];
     return currencyInfo.allKeys.firstObject;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     // 選択中の通貨を設定
-    self.selectedCurrency = [NSMutableArray new];
+    _selectedCurrency = [NSMutableArray new];
    
-    NSArray *array = [self.currencyInfoList[row] allValues];
+    NSArray *array = [_currencyInfoList[row] allValues];
     
     for (NSString *key in [array[0] allKeys]) {
-        [self.selectedCurrency addObject:[NSDictionary dictionaryWithObject:array[0][key] forKey:key]];
+        [_selectedCurrency addObject:[NSDictionary dictionaryWithObject:array[0][key] forKey:key]];
     }
     
     // 選択中通貨を保存
-    [self setSelectedCurrencyName:[[self.currencyInfoList[row] allKeys] firstObject]];
+    [self setSelectedCurrencyName:[[_currencyInfoList[row] allKeys] firstObject]];
     
     // tableView更新
-    [self.rateTableView reloadData];
+    [_rateTableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.selectedCurrency count];
+    return [_selectedCurrency count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -148,7 +150,7 @@
                                       reuseIdentifier:CellIdentifier];
     }
     
-    NSDictionary *targetDictionary = self.selectedCurrency[indexPath.row];
+    NSDictionary *targetDictionary = _selectedCurrency[indexPath.row];
     
     // 通貨名
     UILabel *nameLbl = (UILabel *)[cell viewWithTag:1];
@@ -190,13 +192,19 @@
     [self fetchForeignCurrencyInfo];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"rcSegue"]) {
-        //遷移先のViewController
-        RateConversionViewController *vc = (RateConversionViewController *)[segue destinationViewController];
-        
-        vc.selectedCurrency = self.selectedCurrency;
-    }
+- (IBAction)nextButtonAction:(id)sender {
+    RateConversionViewController *vc = [UIStoryBoard RateConversion];
+    vc.selectedCurrency = _selectedCurrency;
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([[segue identifier] isEqualToString:@"rcSegue"]) {
+//        //遷移先のViewController
+//        RateConversionViewController *vc = (RateConversionViewController *)[segue destinationViewController];
+//
+//        vc.selectedCurrency = _selectedCurrency;
+//    }
+//}
 
 @end

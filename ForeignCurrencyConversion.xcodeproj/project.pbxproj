@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		99D70DDD2E58C7E61FEC90CA /* libPods-ForeignCurrencyConversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D080C4C1456F42344798602 /* libPods-ForeignCurrencyConversion.a */; };
+		C4070C23214CA4FF001E9A7E /* RateConversionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4070C22214CA4FF001E9A7E /* RateConversionView.storyboard */; };
+		C4070C25214CA7A1001E9A7E /* UIStoryBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = C4070C24214CA7A1001E9A7E /* UIStoryBoard.m */; };
 		C418E53C214899FF00D47CC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E53B214899FF00D47CC4 /* AppDelegate.m */; };
-		C418E53F214899FF00D47CC4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E53E214899FF00D47CC4 /* MainViewController.m */; };
-		C418E542214899FF00D47CC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E540214899FF00D47CC4 /* Main.storyboard */; };
+		C418E53F214899FF00D47CC4 /* RateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E53E214899FF00D47CC4 /* RateViewController.m */; };
+		C418E542214899FF00D47CC4 /* RateView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E540214899FF00D47CC4 /* RateView.storyboard */; };
 		C418E544214899FF00D47CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C418E543214899FF00D47CC4 /* Assets.xcassets */; };
 		C418E547214899FF00D47CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */; };
 		C418E54A214899FF00D47CC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E549214899FF00D47CC4 /* main.m */; };
@@ -21,12 +23,15 @@
 /* Begin PBXFileReference section */
 		34917204AACD3E9833CAEAB3 /* Pods-ForeignCurrencyConversion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForeignCurrencyConversion.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForeignCurrencyConversion/Pods-ForeignCurrencyConversion.release.xcconfig"; sourceTree = "<group>"; };
 		3D080C4C1456F42344798602 /* libPods-ForeignCurrencyConversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ForeignCurrencyConversion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4070C22214CA4FF001E9A7E /* RateConversionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RateConversionView.storyboard; sourceTree = "<group>"; };
+		C4070C24214CA7A1001E9A7E /* UIStoryBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIStoryBoard.m; sourceTree = "<group>"; };
+		C4070C27214CA7F1001E9A7E /* UIStoryBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIStoryBoard.h; sourceTree = "<group>"; };
 		C418E537214899FF00D47CC4 /* ForeignCurrencyConversion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForeignCurrencyConversion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C418E53A214899FF00D47CC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C418E53B214899FF00D47CC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C418E53D214899FF00D47CC4 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		C418E53E214899FF00D47CC4 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		C418E541214899FF00D47CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C418E53D214899FF00D47CC4 /* RateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateViewController.h; sourceTree = "<group>"; };
+		C418E53E214899FF00D47CC4 /* RateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateViewController.m; sourceTree = "<group>"; };
+		C418E541214899FF00D47CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RateView.storyboard; sourceTree = "<group>"; };
 		C418E543214899FF00D47CC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C418E546214899FF00D47CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C418E548214899FF00D47CC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +72,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C4070C26214CA7BF001E9A7E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C4070C27214CA7F1001E9A7E /* UIStoryBoard.h */,
+				C4070C24214CA7A1001E9A7E /* UIStoryBoard.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		C418E52E214899FF00D47CC4 = {
 			isa = PBXGroup;
 			children = (
@@ -90,12 +104,14 @@
 			children = (
 				C418E53A214899FF00D47CC4 /* AppDelegate.h */,
 				C418E53B214899FF00D47CC4 /* AppDelegate.m */,
-				C418E53D214899FF00D47CC4 /* MainViewController.h */,
-				C418E53E214899FF00D47CC4 /* MainViewController.m */,
+				C418E53D214899FF00D47CC4 /* RateViewController.h */,
+				C418E53E214899FF00D47CC4 /* RateViewController.m */,
 				C49F3E7221495AAF0033AEB9 /* RateConversionViewController.h */,
 				C49F3E7321495B110033AEB9 /* RateConversionViewController.m */,
 				C48671152148A3600008DEDA /* ConnectionService */,
-				C418E540214899FF00D47CC4 /* Main.storyboard */,
+				C4070C26214CA7BF001E9A7E /* Utility */,
+				C418E540214899FF00D47CC4 /* RateView.storyboard */,
+				C4070C22214CA4FF001E9A7E /* RateConversionView.storyboard */,
 				C418E543214899FF00D47CC4 /* Assets.xcassets */,
 				C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */,
 				C418E548214899FF00D47CC4 /* Info.plist */,
@@ -174,8 +190,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C418E547214899FF00D47CC4 /* LaunchScreen.storyboard in Resources */,
+				C4070C23214CA4FF001E9A7E /* RateConversionView.storyboard in Resources */,
 				C418E544214899FF00D47CC4 /* Assets.xcassets in Resources */,
-				C418E542214899FF00D47CC4 /* Main.storyboard in Resources */,
+				C418E542214899FF00D47CC4 /* RateView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +256,8 @@
 			files = (
 				C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */,
 				C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */,
-				C418E53F214899FF00D47CC4 /* MainViewController.m in Sources */,
+				C4070C25214CA7A1001E9A7E /* UIStoryBoard.m in Sources */,
+				C418E53F214899FF00D47CC4 /* RateViewController.m in Sources */,
 				C418E54A214899FF00D47CC4 /* main.m in Sources */,
 				C418E53C214899FF00D47CC4 /* AppDelegate.m in Sources */,
 			);
@@ -248,12 +266,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C418E540214899FF00D47CC4 /* Main.storyboard */ = {
+		C418E540214899FF00D47CC4 /* RateView.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C418E541214899FF00D47CC4 /* Base */,
 			);
-			name = Main.storyboard;
+			name = RateView.storyboard;
 			sourceTree = "<group>";
 		};
 		C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */ = {

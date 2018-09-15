@@ -11,9 +11,9 @@
 #import <MMNumberKeyboard.h>
 
 @interface RateConversionViewController() <MMNumberKeyboardDelegate>
-
 @property (weak, nonatomic) IBOutlet UIView *keyBoardView;
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
+
 
 @end
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Rate Conversion View Controller-->
+        <scene sceneID="IL3-Hv-pm5">
+            <objects>
+                <viewController storyboardIdentifier="RateConversion" id="Pfy-dX-6ke" customClass="RateConversionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LoI-Ss-MQ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dP4-er-6L9">
+                                <rect key="frame" x="30" y="35" width="315" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9TJ-AW-Mtm"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKY-Lm-0RM">
+                                <rect key="frame" x="0.0" y="320" width="375" height="347"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UKY-Lm-0RM" firstAttribute="top" secondItem="dP4-er-6L9" secondAttribute="bottom" constant="245" id="AM4-Th-VtA"/>
+                            <constraint firstItem="n0A-W0-Zo1" firstAttribute="trailing" secondItem="UKY-Lm-0RM" secondAttribute="trailing" id="aGO-WE-7tb"/>
+                            <constraint firstItem="n0A-W0-Zo1" firstAttribute="bottom" secondItem="UKY-Lm-0RM" secondAttribute="bottom" id="iOd-DT-G3t"/>
+                            <constraint firstItem="UKY-Lm-0RM" firstAttribute="leading" secondItem="n0A-W0-Zo1" secondAttribute="leading" id="jxq-du-f5m"/>
+                            <constraint firstItem="UKY-Lm-0RM" firstAttribute="top" secondItem="n0A-W0-Zo1" secondAttribute="top" constant="300" id="qfr-Wo-19m"/>
+                            <constraint firstItem="n0A-W0-Zo1" firstAttribute="trailing" secondItem="dP4-er-6L9" secondAttribute="trailing" constant="30" id="uoO-p4-NcT"/>
+                            <constraint firstItem="dP4-er-6L9" firstAttribute="leading" secondItem="n0A-W0-Zo1" secondAttribute="leading" constant="30" id="vKv-DL-zqZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n0A-W0-Zo1"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="dP4-er-6L9" id="hgD-nx-bo6"/>
+                        <outlet property="keyBoardView" destination="UKY-Lm-0RM" id="SGp-C0-ZhW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OWu-PB-n6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159" y="104"/>
+        </scene>
+    </scenes>
+</document>
