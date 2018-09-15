@@ -13,14 +13,10 @@
 
 @interface MainViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
-// 通貨リスト
-@property (nonatomic, retain) NSArray *currencyInfoList;
-
-// 選択中通貨
-@property (nonatomic, retain) NSMutableArray *selectedCurrency;
+@property (nonatomic, retain) NSArray *currencyInfoList; // 通貨リスト
+@property (nonatomic, retain) NSMutableArray *selectedCurrency; // 選択中通貨
 
 @property (weak, nonatomic) IBOutlet UIPickerView *currencyPickerView;
-
 @property (weak, nonatomic) IBOutlet UITableView *rateTableView;
 @property (weak, nonatomic) IBOutlet UILabel *lastModifiedLabel;
 
