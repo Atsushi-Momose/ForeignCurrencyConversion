@@ -12,6 +12,7 @@
 #import "RateConversionViewController.h"
 #import "UIStoryBoard.h"
 #import "UserDefault.h"
+#import "Utility.h"
 
 @interface RateViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
@@ -35,6 +36,8 @@
     
     _currencyInfoList = [NSMutableArray new];
     _selectedCurrency = [NSMutableArray new];
+    
+    [Utility showMask];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,16 +70,21 @@
                 // 画面表示更新
                 [weakSelf refresh];
             });
-        } else if (response) {
+        } else if (response) { // 404等
             
+            [SVProgressHUD dismiss];
+           
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            NSString *statusCode = [NSString stringWithFormat:@"statusCode %ld", (long)httpResponse.statusCode];
+            [Utility showAlertController:@"通信エラー" message:statusCode];
         }
         
         [SVProgressHUD dismiss];
     }
      
     failure:^(NSError *error) {
-        
-         [SVProgressHUD dismiss];
+        [SVProgressHUD dismiss];
+        [Utility showAlertController:@"Error" message:error.localizedDescription];
     }];
 }
 
@@ -94,6 +102,8 @@
     [_currencyPickerView selectRow:0 inComponent:0 animated:NO];
     
     [self.rateTableView reloadData];
+    
+    [Utility maskDismiss];
 }
 
 - (void)updateLastModifiedLabel {

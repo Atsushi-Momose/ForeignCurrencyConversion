@@ -39,7 +39,7 @@
                                                    delegateQueue: [NSOperationQueue mainQueue]];
     // Header 作成
     NSMutableURLRequest *request = [NSMutableURLRequest new];
-    [request setURL            :[NSURL URLWithString:@"https://hiring.coiney.com/exchange_rates"]];
+    [request setURL            :[NSURL URLWithString:@"https://hiring.coiney.com/exchange_ratesi"]];
     [request setCachePolicy    :NSURLRequestReloadIgnoringLocalCacheData];
     [request setValue          :@"identity"   forHTTPHeaderField:@"Accept-encording"];
     [request setValue          :@"no-cache"   forHTTPHeaderField:@"Cache-Control"];
@@ -48,6 +48,14 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
                                   {
+                                      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                      if (httpResponse.statusCode != 200) {
+                                          completionhandler(nil, response);
+                                      }
+                                      
+                                      NSString *statusCode = [NSString stringWithFormat:@"@%@", httpResponse];
+                                      NSLog(@"%@", statusCode);
+                                      
                                       // 通信が異常終了した場合
                                       if (error) {
                                           if (failure) {
@@ -102,32 +110,6 @@ didReceiveResponse:(NSURLResponse *)response
         // error.code = -999で終了メソッドが呼ばれる
         completionHandler(NSURLSessionResponseCancel);  // 止める
     }
-}
-
-// 受信データ処理
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    
-    // 受信データ格納
-    [self.recevedData appendData:data];
-}
-
-//
-// 終了処理 [正常終了、エラー終了、途中終了でもこのメソッドが呼ばれる]
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    
-    if (!error) {
-        //
-        // 正常終了
-        //
-        
-    } else {
-        //
-        // エラー終了
-        //
-        
-    }
-    
-    [session invalidateAndCancel];
 }
 
 @end

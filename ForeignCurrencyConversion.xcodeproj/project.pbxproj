@@ -16,6 +16,7 @@
 		C418E544214899FF00D47CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C418E543214899FF00D47CC4 /* Assets.xcassets */; };
 		C418E547214899FF00D47CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */; };
 		C418E54A214899FF00D47CC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E549214899FF00D47CC4 /* main.m */; };
+		C463FB1B214D61A700216A0A /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C463FB1A214D61A700216A0A /* Utility.m */; };
 		C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C48671172148A3E70008DEDA /* APIConnectionService.m */; };
 		C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49F3E7321495B110033AEB9 /* RateConversionViewController.m */; };
 		C4FAB730214D4B2A002B99EA /* UserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB72F214D4B2A002B99EA /* UserDefault.m */; };
@@ -37,6 +38,8 @@
 		C418E546214899FF00D47CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C418E548214899FF00D47CC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C418E549214899FF00D47CC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C463FB19214D61A700216A0A /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		C463FB1A214D61A700216A0A /* Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		C48671162148A3CF0008DEDA /* APIConnectionService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIConnectionService.h; sourceTree = "<group>"; };
 		C48671172148A3E70008DEDA /* APIConnectionService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIConnectionService.m; sourceTree = "<group>"; };
 		C49F3E7221495AAF0033AEB9 /* RateConversionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateConversionViewController.h; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 				C4070C24214CA7A1001E9A7E /* UIStoryBoard.m */,
 				C4FAB72E214D4B2A002B99EA /* UserDefault.h */,
 				C4FAB72F214D4B2A002B99EA /* UserDefault.m */,
+				C463FB19214D61A700216A0A /* Utility.h */,
+				C463FB1A214D61A700216A0A /* Utility.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */,
 				C4FAB730214D4B2A002B99EA /* UserDefault.m in Sources */,
 				C4070C25214CA7A1001E9A7E /* UIStoryBoard.m in Sources */,
+				C463FB1B214D61A700216A0A /* Utility.m in Sources */,
 				C418E53F214899FF00D47CC4 /* RateViewController.m in Sources */,
 				C418E54A214899FF00D47CC4 /* main.m in Sources */,
 				C418E53C214899FF00D47CC4 /* AppDelegate.m in Sources */,
