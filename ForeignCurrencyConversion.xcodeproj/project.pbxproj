@@ -81,6 +81,15 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		C40A6F1D214CB1DC00F5FF6B /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				C418E540214899FF00D47CC4 /* RateView.storyboard */,
+				C4070C22214CA4FF001E9A7E /* RateConversionView.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 		C418E52E214899FF00D47CC4 = {
 			isa = PBXGroup;
 			children = (
@@ -110,8 +119,7 @@
 				C49F3E7321495B110033AEB9 /* RateConversionViewController.m */,
 				C48671152148A3600008DEDA /* ConnectionService */,
 				C4070C26214CA7BF001E9A7E /* Utility */,
-				C418E540214899FF00D47CC4 /* RateView.storyboard */,
-				C4070C22214CA4FF001E9A7E /* RateConversionView.storyboard */,
+				C40A6F1D214CB1DC00F5FF6B /* StoryBoard */,
 				C418E543214899FF00D47CC4 /* Assets.xcassets */,
 				C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */,
 				C418E548214899FF00D47CC4 /* Info.plist */,

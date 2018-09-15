@@ -32,8 +32,6 @@
     
     [super viewDidLoad];
     
-    _rateTableView.dataSource = self;
-    _rateTableView.delegate = self;
     _selectedCurrency = [NSMutableArray new];
 }
 
@@ -194,6 +192,7 @@
 
 - (IBAction)nextButtonAction:(id)sender {
     RateConversionViewController *vc = [UIStoryBoard RateConversion];
+    vc.currencyInfoList = _currencyInfoList;
     vc.selectedCurrency = _selectedCurrency;
     [self.navigationController pushViewController:vc animated:YES];
 }

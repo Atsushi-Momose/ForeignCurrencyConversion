@@ -9,6 +9,9 @@
 
 @interface RateConversionViewController : UIViewController
 
+// 通貨リスト
+@property (nonatomic, retain) NSArray *currencyInfoList;
+
 // 選択中通貨
 @property (nonatomic, retain) NSMutableArray *selectedCurrency;
 
