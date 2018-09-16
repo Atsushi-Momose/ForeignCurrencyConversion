@@ -18,13 +18,11 @@
 
 @property (nonatomic, retain) NSMutableArray *currencyInfoList; // 通貨リスト
 @property (nonatomic, retain) NSMutableArray *selectedCurrency; // 選択中通貨
+@property (nonatomic) UILabel *preSelectedLb;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *currencyPickerView;
 @property (weak, nonatomic) IBOutlet UITableView *rateTableView;
 @property (weak, nonatomic) IBOutlet UILabel *lastModifiedLabel;
-
-- (IBAction)upDateButtonAction:(id)sender;
-- (IBAction)nextButtonAction:(id)sender;
 
 @end
 
@@ -42,7 +40,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     // 通信開始
     [self fetchForeignCurrencyInfo];
 }
@@ -89,21 +87,22 @@
 }
 
 - (void)refresh {
+ 
+    [Utility maskDismiss];
+    
     // 最終更新日更新
     [self updateLastModifiedLabel];
     
     // 選択中の通貨情報を通貨リストの先頭に移動
     [self sortCurrencyInfoList];
     
-    // 通貨ピッカー更新
-    [self.currencyPickerView reloadAllComponents];
-    
     // pickerViewを選択状態に
     [_currencyPickerView selectRow:0 inComponent:0 animated:NO];
     
-    [self.rateTableView reloadData];
+    // 通貨ピッカー更新
+    [self.currencyPickerView reloadAllComponents];
     
-    [Utility maskDismiss];
+    [self.rateTableView reloadData];
 }
 
 - (void)updateLastModifiedLabel {
@@ -130,13 +129,50 @@
     return 0;
 }
 
-// 内容
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSDictionary *currencyInfo = _currencyInfoList[row];
-    return currencyInfo.allKeys.firstObject;
+// 行高さ
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return 60.0f;
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    
+    UILabel *lbl = [UILabel new];
+    lbl.tag = 99;
+    NSString *title = [[_currencyInfoList[row] allKeys] firstObject];
+    
+    NSMutableAttributedString *attrStr;
+    // フォント
+    attrStr = [[NSMutableAttributedString new] initWithString:title];
+    [attrStr addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"HiraKakuProN-W3" size:24.]
+                    range:NSMakeRange(0, [attrStr length])];
+    
+    // 文字色
+    [attrStr addAttribute:NSForegroundColorAttributeName
+                    value:[UIColor grayColor]
+                    range:NSMakeRange(0, [attrStr length])];
+    
+    lbl.attributedText = attrStr;
+    lbl.textAlignment = NSTextAlignmentCenter;
+    lbl.frame = CGRectMake(0, 0, 200, 60);
+    // 角丸
+    lbl.layer.masksToBounds = YES;
+    lbl.layer.cornerRadius = 5.0;
+    
+    // 選択中のrowを取得
+    NSInteger com0 = [_currencyPickerView selectedRowInComponent:0];
+    
+    if (row == com0) {
+        _preSelectedLb = lbl;
+        _preSelectedLb.backgroundColor = [UIColor orangeColor];
+        _preSelectedLb.textColor = [UIColor whiteColor];
+    }
+    return lbl;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    _preSelectedLb = (UILabel *)[pickerView viewForRow:row forComponent:component];
     
     // 選択中の通貨を設定
     _selectedCurrency = [NSMutableArray new];
@@ -149,6 +185,8 @@
     
     // 選択中通貨を保存
     [UserDefault setSelectedCurrencyName:[[_currencyInfoList[row] allKeys] firstObject]];
+    
+    [pickerView reloadComponent:0];
     
     // tableView更新
     [_rateTableView reloadData];
@@ -196,11 +234,12 @@
     return 44;
 }
 
-- (IBAction)upDateButtonAction:(id)sender {
+
+- (IBAction)updateAction:(id)sender {
     [self fetchForeignCurrencyInfo];
 }
 
-- (IBAction)nextButtonAction:(id)sender {
+- (IBAction)nextAction:(id)sender {
     RateConversionViewController *vc = [UIStoryBoard RateConversion];
     vc.currencyInfoList = [self sortCurrencyInfoList];
     vc.selectedCurrency = _selectedCurrency;

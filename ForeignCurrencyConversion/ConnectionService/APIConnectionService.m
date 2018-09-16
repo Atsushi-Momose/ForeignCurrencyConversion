@@ -39,7 +39,7 @@
                                                    delegateQueue: [NSOperationQueue mainQueue]];
     // Header 作成
     NSMutableURLRequest *request = [NSMutableURLRequest new];
-    [request setURL            :[NSURL URLWithString:@"https://hiring.coiney.com/exchange_ratesi"]];
+    [request setURL            :[NSURL URLWithString:@"https://hiring.coiney.com/exchange_rates"]];
     [request setCachePolicy    :NSURLRequestReloadIgnoringLocalCacheData];
     [request setValue          :@"identity"   forHTTPHeaderField:@"Accept-encording"];
     [request setValue          :@"no-cache"   forHTTPHeaderField:@"Cache-Control"];
