@@ -304,10 +304,10 @@ static const CGFloat MMNumberKeyboardPadSpacing = 8.0f;
     
     // Handle special key.
     else if (keyboardButton == MMNumberKeyboardButtonSpecial) {
-        dispatch_block_t handler = self.specialKeyHandler;
-        if (handler) {
-            handler();
-        }
+//        dispatch_block_t handler = self.specialKeyHandler;
+//        if (handler) {
+//            handler();
+//        }
     }
     
     // Handle .
@@ -406,11 +406,13 @@ static const CGFloat MMNumberKeyboardPadSpacing = 8.0f;
 
 - (void)_dismissKeyboard:(id)sender
 {
-    id <UIKeyInput> keyInput = self.keyInput;
+    return;
     
-    if ([keyInput isKindOfClass:[UIResponder class]]) {
-        [(UIResponder *)keyInput resignFirstResponder];
-    }
+//    id <UIKeyInput> keyInput = self.keyInput;
+//
+//    if ([keyInput isKindOfClass:[UIResponder class]]) {
+//        [(UIResponder *)keyInput resignFirstResponder];
+//    }
 }
 
 #pragma mark - Public.

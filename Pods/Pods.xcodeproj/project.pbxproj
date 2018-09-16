@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00C55E4847A76511FE33AC1F4F223F3C /* libPods-ForeignCurrencyConversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ForeignCurrencyConversion.a"; path = "libPods-ForeignCurrencyConversion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00C55E4847A76511FE33AC1F4F223F3C /* libPods-ForeignCurrencyConversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ForeignCurrencyConversion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0804D7D53D0917DB092DCD84E9B64127 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		0ABBE4189730914BBC1ACCE2972FA8B2 /* MMNumberKeyboard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MMNumberKeyboard.xcconfig; sourceTree = "<group>"; };
 		0FB4C7F1FE065F0C543CDEB535C7D571 /* MMNumberKeyboard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MMNumberKeyboard-prefix.pch"; sourceTree = "<group>"; };
@@ -64,16 +64,16 @@
 		5D703F9E00D74A694AA90ED4A476FF36 /* MMNumberKeyboardDismissKey@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MMNumberKeyboardDismissKey@3x.png"; path = "Images/MMNumberKeyboardDismissKey@3x.png"; sourceTree = "<group>"; };
 		6059CD12869FDBB606F08A41C79215B1 /* Pods-ForeignCurrencyConversion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ForeignCurrencyConversion.release.xcconfig"; sourceTree = "<group>"; };
 		66B31ADC58A489E74656D5F1DF977E0F /* Pods-ForeignCurrencyConversion-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ForeignCurrencyConversion-dummy.m"; sourceTree = "<group>"; };
-		68AEBF8FE8E10D1DAA5F191CB9CF498B /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSVProgressHUD.a; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		68AEBF8FE8E10D1DAA5F191CB9CF498B /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		77C6A23187CA5A9CF7F468EC39950AC8 /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
 		7CD79B5E80478464188F896C96D895E9 /* Pods-ForeignCurrencyConversion-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ForeignCurrencyConversion-acknowledgements.plist"; sourceTree = "<group>"; };
 		8AF560E5C78CFB410E3747BF1F582FED /* MMTextInputDelegateProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MMTextInputDelegateProxy.m; path = Classes/MMTextInputDelegateProxy.m; sourceTree = "<group>"; };
 		8B26F14894B8046E11BCD1CE9A5AE31F /* MMKeyboardButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MMKeyboardButton.m; path = Classes/MMKeyboardButton.m; sourceTree = "<group>"; };
 		8B666F3737AB8CC8F591A5162874EEC6 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		974BDC2DBE6D76821227435D770A31E2 /* Pods-ForeignCurrencyConversion-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ForeignCurrencyConversion-frameworks.sh"; sourceTree = "<group>"; };
 		A9CB69D02B2F0D77A648CD84ADCF53A6 /* MMTextInputDelegateProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMTextInputDelegateProxy.h; path = Classes/MMTextInputDelegateProxy.h; sourceTree = "<group>"; };
-		AF98C0D7FC7FFEE44827D027A5152E90 /* libMMNumberKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMMNumberKeyboard.a; path = libMMNumberKeyboard.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF98C0D7FC7FFEE44827D027A5152E90 /* libMMNumberKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMMNumberKeyboard.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B028839B60B1302EE19B73966202BD33 /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		B433DCCB6D8CFD0B7E5130B0B74602CE /* SVProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.xcconfig; sourceTree = "<group>"; };
 		B4A5934DC5AD5C3B5522588CC7A3635A /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
@@ -165,7 +165,6 @@
 				4C2F2DAB611FB1D280C64D46AFBCF64F /* Resources */,
 				99190AD3BE067D110A3B8F2DABAD28E1 /* Support Files */,
 			);
-			name = SVProgressHUD;
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -256,7 +255,6 @@
 				02B8EA32937D716944ABC1F84A4CF6CB /* Resources */,
 				CD9589437090922743B255B9F434DA80 /* Support Files */,
 			);
-			name = MMNumberKeyboard;
 			path = MMNumberKeyboard;
 			sourceTree = "<group>";
 		};
@@ -354,7 +352,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -590,7 +588,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/MMNumberKeyboard/MMNumberKeyboard-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -613,7 +611,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/MMNumberKeyboard/MMNumberKeyboard-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";

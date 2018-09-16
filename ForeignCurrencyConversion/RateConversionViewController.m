@@ -37,19 +37,6 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
-    [self becomeFirstResponder];
-}
-
-- (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    
-    [_inputTextField canBecomeFirstResponder];
-    [_inputTextField becomeFirstResponder];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -58,7 +45,10 @@
     MMNumberKeyboard *keyboard = [[MMNumberKeyboard alloc] initWithFrame: _keyBoardView.frame];
     keyboard.allowsDecimalPoint = YES;
     keyboard.delegate = self;
-    [self.view addSubview:keyboard];
+    _inputTextField.inputView = keyboard;
+    _inputTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    [_inputTextField becomeFirstResponder];
 }
 
 // MARK: 内部メソッド
@@ -85,6 +75,13 @@
 }
 
 - (void)didChangeTextField {
+    
+    if ([_inputTextField.text length] == 1 && [_inputTextField.text isEqualToString:@"."]) {
+        _inputTextField.text = nil;
+        _resultLabel.text = nil;
+        return;
+    }
+    
     if (![_inputTextField.text length]) {
         _resultLabel.text = nil;
     }
@@ -160,10 +157,6 @@
     
     // 換算
     [self rateConvertingCalculation];
-}
-
-- (BOOL)canBecomeFirstResponder {
-    return YES;
 }
 
 // MARK: MMNumberKeyboardDelegate

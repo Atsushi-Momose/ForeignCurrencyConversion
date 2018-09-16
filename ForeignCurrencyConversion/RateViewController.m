@@ -14,6 +14,8 @@
 #import "UserDefault.h"
 #import "Utility.h"
 
+#define PICKER_ROW_HEIGHT 50
+
 @interface RateViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
 // MARK: IBOoutlet
@@ -175,7 +177,7 @@
 
 // 行高さ
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
-    return 60;
+    return PICKER_ROW_HEIGHT;
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
@@ -198,7 +200,7 @@
     
     lbl.attributedText = attrStr;
     lbl.textAlignment = NSTextAlignmentCenter;
-    lbl.frame = CGRectMake(0, 0, 200, 60);
+    lbl.frame = CGRectMake(0, 0, 200, PICKER_ROW_HEIGHT);
     // 角丸
     lbl.layer.masksToBounds = YES;
     lbl.layer.cornerRadius = 5.0;
