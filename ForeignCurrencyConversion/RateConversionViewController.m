@@ -10,6 +10,7 @@
 #import "RateConversionViewController.h"
 #import <MMNumberKeyboard.h>
 #import "UserDefault.h"
+#import "Utility.h"
 
 @interface RateConversionViewController() <MMNumberKeyboardDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -78,10 +79,9 @@
     
     // 入力値
     double inputValue = _inputTextField.text.doubleValue;
-    
     double result = convertCurrencyValue * inputValue;
     
-    _resultLabel.text = [NSString stringWithFormat:@"%3f", result];
+    _resultLabel.text = [Utility getValueUpToFiveDecimal:result];
 }
 
 - (void)didChangeTextField {
@@ -156,10 +156,6 @@
         
          NSDictionary *targetDictionary = _currencyInfoList[indexPath.row];
         _convertCurrency = [[targetDictionary allKeys] firstObject];
-        
-//        if (![[[targetDictionary allKeys] firstObject] isEqualToString:[[_targetCurrencyInfo allKeys] firstObject]]) {
-//            _resultLabel.text = nil;
-//        }
     }
     
     // 換算
@@ -189,6 +185,3 @@
 
 
 @end
-
-
-

@@ -17,4 +17,7 @@
 
 + (void)maskDismiss;
 
+// 小数点以下5位までのstringに変換
++ (NSString *)getValueUpToFiveDecimal:(double)value;
+
 @end

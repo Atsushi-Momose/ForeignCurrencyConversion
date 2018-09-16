@@ -262,7 +262,7 @@
     // レート
     UILabel *rateLbl = (UILabel *)[cell viewWithTag:2];
     double rate = [[[targetDictionary allValues] firstObject] doubleValue];
-    rateLbl.text = [NSString stringWithFormat:@"%2f", rate];
+    rateLbl.text = [Utility getValueUpToFiveDecimal:rate];
     
     return cell;
 }

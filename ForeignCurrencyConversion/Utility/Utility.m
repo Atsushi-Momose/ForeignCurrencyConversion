@@ -57,4 +57,12 @@
     [mask removeFromSuperview];
 }
 
++ (NSString *)getValueUpToFiveDecimal:(double)value {
+    NSString *valueStr = [NSString stringWithFormat:@"%f", value];
+    float fValue = [valueStr floatValue];
+    NSString *result = [NSString stringWithFormat:@"%.5f", fValue];
+    return result;
+}
+
+
 @end
