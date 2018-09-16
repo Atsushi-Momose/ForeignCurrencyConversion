@@ -43,7 +43,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ucq-oE-588"/>
                                 </connections>
                             </pickerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y1k-FA-kX5" userLabel="RateTableView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y1k-FA-kX5" userLabel="RateTableView">
                                 <rect key="frame" x="30" y="295" width="315" height="322"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -51,21 +51,21 @@
                                         <rect key="frame" x="0.0" y="28" width="315" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QyX-dn-kgt" id="oRY-Bg-LWg">
-                                            <rect key="frame" x="0.0" y="0.0" width="315" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="315" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTr-pt-dma">
-                                                    <rect key="frame" x="98" y="13" width="70" height="18"/>
+                                                    <rect key="frame" x="78" y="13" width="65" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="PSo-5U-66E"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="65" id="PSo-5U-66E"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVH-9b-1k7">
-                                                    <rect key="frame" x="168" y="13" width="139" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="143" y="13" width="164" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -75,7 +75,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="mTr-pt-dma" secondAttribute="bottom" constant="5" id="2zu-Ce-y7z"/>
                                                 <constraint firstItem="AVH-9b-1k7" firstAttribute="top" secondItem="mTr-pt-dma" secondAttribute="top" id="6b7-WA-Zaj"/>
                                                 <constraint firstItem="AVH-9b-1k7" firstAttribute="bottom" secondItem="mTr-pt-dma" secondAttribute="bottom" id="70C-98-WUn"/>
-                                                <constraint firstItem="mTr-pt-dma" firstAttribute="leading" secondItem="oRY-Bg-LWg" secondAttribute="leadingMargin" constant="90" id="ByO-Tr-VfY"/>
+                                                <constraint firstItem="mTr-pt-dma" firstAttribute="leading" secondItem="oRY-Bg-LWg" secondAttribute="leadingMargin" constant="70" id="ByO-Tr-VfY"/>
                                                 <constraint firstItem="AVH-9b-1k7" firstAttribute="leading" secondItem="mTr-pt-dma" secondAttribute="trailing" id="D6O-aE-UNe"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="AVH-9b-1k7" secondAttribute="trailing" id="wyo-MK-AyO"/>
                                             </constraints>
@@ -93,7 +93,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="SrD-oW-Khq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>

@@ -16,17 +16,21 @@
 
 @interface RateViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, retain) NSMutableArray *currencyInfoList; // 通貨リスト
-@property (nonatomic, retain) NSMutableArray *selectedCurrency; // 選択中通貨
-@property (nonatomic) UILabel *preSelectedLb;
-
+// MARK: IBOoutlet
 @property (weak, nonatomic) IBOutlet UIPickerView *currencyPickerView;
 @property (weak, nonatomic) IBOutlet UITableView *rateTableView;
 @property (weak, nonatomic) IBOutlet UILabel *lastModifiedLabel;
 
+// MARK: プロパティ
+@property (nonatomic, retain) NSMutableArray *currencyInfoList; // 通貨リスト
+@property (nonatomic, retain) NSMutableArray *selectedCurrency; // 選択中通貨
+@property (nonatomic) UILabel *preSelectedLb;
+
 @end
 
 @implementation RateViewController
+
+// MARK: View Lifecycle
 
 - (void)viewDidLoad {
     
@@ -52,6 +56,7 @@
     _currencyPickerView.showsSelectionIndicator = YES;
 }
 
+// MARK: 内部メソッド
 - (void)fetchForeignCurrencyInfo {
     
     // ローディング
@@ -115,6 +120,45 @@
     _lastModifiedLabel.text = [NSString stringWithFormat:@"最終更新日時：%@", StTime];
 }
 
+// 通貨リストの先頭に選択中の通貨を移動
+- (NSArray *)sortCurrencyInfoList {
+    
+    // 選択中の通貨が存在する場合
+    NSString *savedCurrency = [UserDefault selectedCurrencyName];
+    if ([savedCurrency length]) {
+        
+        // 通貨情報リストから該当データを取得
+        _selectedCurrency = [NSMutableArray new];
+        
+        NSDictionary *sortTargetInfo = [NSDictionary new];
+        
+        int i = 0;
+        for (NSDictionary *dic in _currencyInfoList) {
+            if ([[[dic allKeys] firstObject] isEqualToString:savedCurrency]) {
+                
+                sortTargetInfo = dic;
+                
+                NSArray *array = [dic allValues];
+                
+                for (NSString *key in array[0]) {
+                    [_selectedCurrency addObject:[NSDictionary dictionaryWithObject:array[0][key] forKey:key]];
+                }
+                break;
+            }
+            i++;
+        }
+        // 先頭に移動
+        if ([sortTargetInfo count]) {
+            [_currencyInfoList removeObjectAtIndex:i];
+            [_currencyInfoList insertObject:sortTargetInfo atIndex:0];
+        }
+    }
+    
+    return _currencyInfoList;
+}
+
+// MARK: UIPickerViewDelegate
+
 // 列数
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
@@ -131,7 +175,7 @@
 
 // 行高さ
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
-    return 60.0f;
+    return 60;
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
@@ -192,6 +236,8 @@
     [_rateTableView reloadData];
 }
 
+// MARK: UITableViewDelegate
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_selectedCurrency count];
 }
@@ -225,15 +271,12 @@
     return 1;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return 50;
 }
 
+// MARK: IBActions
 
 - (IBAction)updateAction:(id)sender {
     [self fetchForeignCurrencyInfo];
@@ -244,43 +287,6 @@
     vc.currencyInfoList = [self sortCurrencyInfoList];
     vc.selectedCurrency = _selectedCurrency;
     [self.navigationController pushViewController:vc animated:YES];
-}
-
-// 通貨リストの先頭に選択中の通貨を移動
-- (NSArray *)sortCurrencyInfoList {
-    
-    // 選択中の通貨が存在する場合
-    NSString *savedCurrency = [UserDefault selectedCurrencyName];
-    if ([savedCurrency length]) {
-        
-        // 通貨情報リストから該当データを取得
-        _selectedCurrency = [NSMutableArray new];
-        
-        NSDictionary *sortTargetInfo = [NSDictionary new];
-        
-        int i = 0;
-        for (NSDictionary *dic in _currencyInfoList) {
-            if ([[[dic allKeys] firstObject] isEqualToString:savedCurrency]) {
-                
-                sortTargetInfo = dic;
-                
-                NSArray *array = [dic allValues];
-                
-                for (NSString *key in array[0]) {
-                    [_selectedCurrency addObject:[NSDictionary dictionaryWithObject:array[0][key] forKey:key]];
-                }
-                break;
-            }
-            i++;
-        }
-        // 先頭に移動
-        if ([sortTargetInfo count]) {
-            [_currencyInfoList removeObjectAtIndex:i];
-            [_currencyInfoList insertObject:sortTargetInfo atIndex:0];
-        }
-    }
-    
-    return _currencyInfoList;
 }
 
 @end

@@ -13,8 +13,7 @@
 
 @interface RateConversionViewController() <MMNumberKeyboardDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, retain) NSDictionary *targetCurrencyInfo; // 換算元の通貨
-@property (nonatomic, retain) NSString *convertCurrency; // 換算先の通過
+// MARK: IBOoutlet
 
 @property (weak, nonatomic) IBOutlet UIView *keyBoardView;
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
@@ -22,10 +21,17 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *convertCurrencyCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 
+// MARK: プロパティ
+
+@property (nonatomic, retain) NSDictionary *targetCurrencyInfo; // 換算元の通貨
+@property (nonatomic, retain) NSString *convertCurrency; // 換算先の通過
+
 @end
 
 
 @implementation RateConversionViewController
+
+// MARK: View Lifecycle
 
 -(void)awakeFromNib
 {
@@ -54,6 +60,46 @@
     [self.view addSubview:keyboard];
 }
 
+// MARK: 内部メソッド
+
+- (void)rateConvertingCalculation {
+    
+    if (_inputTextField.text.length == 0 || ![_targetCurrencyInfo count] || _convertCurrency.length == 0) {
+        return;
+    }
+    // 同じ通貨を選択した場合
+    if ([[[_targetCurrencyInfo allKeys] firstObject] isEqualToString:_convertCurrency]) {
+        _resultLabel.text = _inputTextField.text;
+        return;
+    }
+    
+    // 換算先通貨のレート
+    double convertCurrencyValue = [[[_targetCurrencyInfo allValues][0] valueForKey:_convertCurrency] doubleValue];
+    
+    // 入力値
+    double inputValue = _inputTextField.text.doubleValue;
+    
+    double result = convertCurrencyValue * inputValue;
+    
+    _resultLabel.text = [NSString stringWithFormat:@"%3f", result];
+}
+
+- (void)didChangeTextField {
+    if (![_inputTextField.text length]) {
+        _resultLabel.text = nil;
+    }
+    
+    [self rateConvertingCalculation];
+}
+
+// MARK: IBActions
+
+- (IBAction)backButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// MARK: UICollectionViewDelegate
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
@@ -74,6 +120,8 @@
         // 前の画面で選択中の通貨かつ本画面のcurrencySelectCollectionViewで通貨を選択していない場合
         if ([[[targetDictionary allKeys] firstObject] isEqualToString:[UserDefault selectedCurrencyName]] && ![_targetCurrencyInfo count]) {
             [cell setSelected:YES];
+            
+            _targetCurrencyInfo = _currencyInfoList[indexPath.row];
        }
         
     } else if (collectionView == _convertCurrencyCollectionView) {
@@ -109,40 +157,20 @@
          NSDictionary *targetDictionary = _currencyInfoList[indexPath.row];
         _convertCurrency = [[targetDictionary allKeys] firstObject];
         
-        if (![[[targetDictionary allKeys] firstObject] isEqualToString:[[_targetCurrencyInfo allKeys] firstObject]]) {
-            _resultLabel.text = nil;
-        }
+//        if (![[[targetDictionary allKeys] firstObject] isEqualToString:[[_targetCurrencyInfo allKeys] firstObject]]) {
+//            _resultLabel.text = nil;
+//        }
     }
     
     // 換算
     [self rateConvertingCalculation];
 }
 
-- (void)rateConvertingCalculation {
-    
-    if (_inputTextField.text.length == 0 || ![_targetCurrencyInfo count] || _convertCurrency.length == 0) {
-        return;
-    }
-    // 同じ通貨を選択した場合
-    if ([[[_targetCurrencyInfo allKeys] firstObject] isEqualToString:_convertCurrency]) {
-        _resultLabel.text = _inputTextField.text;
-        return;
-    }
-
-    // 換算先通貨のレート
-    double convertCurrencyValue = [[[_targetCurrencyInfo allValues][0] valueForKey:_convertCurrency] doubleValue];
-    
-    // 入力値
-    double inputValue = _inputTextField.text.doubleValue;
-
-    double result = convertCurrencyValue * inputValue;
-    
-    _resultLabel.text = [NSString stringWithFormat:@"%3f", result];
-}
-
 - (BOOL)canBecomeFirstResponder {
     return YES;
 }
+
+// MARK: MMNumberKeyboardDelegate
 
 - (BOOL)numberKeyboardShouldReturn:(MMNumberKeyboard *)numberKeyboard {
     [_inputTextField addTarget:self action:@selector(didChangeTextField) forControlEvents:UIControlEventEditingChanged];
@@ -159,17 +187,6 @@
     return YES;
 }
 
-- (IBAction)backButtonAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)didChangeTextField {
-    if (![_inputTextField.text length]) {
-        _resultLabel.text = nil;
-    }
-    
-    [self rateConvertingCalculation];
-}
 
 @end
 
