@@ -18,6 +18,7 @@
 		C418E54A214899FF00D47CC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E549214899FF00D47CC4 /* main.m */; };
 		C457C3662153C8DE002A6BD0 /* UIAlertController+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C457C3652153C8DE002A6BD0 /* UIAlertController+Utility.m */; };
 		C457C3692153CA86002A6BD0 /* UIViewController+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C457C3682153CA86002A6BD0 /* UIViewController+Utility.m */; };
+		C457C36B2153CE96002A6BD0 /* RatePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C457C36A2153CE96002A6BD0 /* RatePresenter.m */; };
 		C463FB1B214D61A700216A0A /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C463FB1A214D61A700216A0A /* Utility.m */; };
 		C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C48671172148A3E70008DEDA /* APIConnectionService.m */; };
 		C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49F3E7321495B110033AEB9 /* RateConversionViewController.m */; };
@@ -44,6 +45,8 @@
 		C457C3652153C8DE002A6BD0 /* UIAlertController+Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Utility.m"; sourceTree = "<group>"; };
 		C457C3672153CA86002A6BD0 /* UIViewController+Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Utility.h"; sourceTree = "<group>"; };
 		C457C3682153CA86002A6BD0 /* UIViewController+Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utility.m"; sourceTree = "<group>"; };
+		C457C36A2153CE96002A6BD0 /* RatePresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatePresenter.m; sourceTree = "<group>"; };
+		C457C36E2153CFE8002A6BD0 /* RatePresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatePresenter.h; sourceTree = "<group>"; };
 		C463FB19214D61A700216A0A /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		C463FB1A214D61A700216A0A /* Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		C48671162148A3CF0008DEDA /* APIConnectionService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIConnectionService.h; sourceTree = "<group>"; };
@@ -109,7 +112,6 @@
 		C418E52E214899FF00D47CC4 = {
 			isa = PBXGroup;
 			children = (
-				C457C3602153C74D002A6BD0 /* Category */,
 				C418E539214899FF00D47CC4 /* ForeignCurrencyConversion */,
 				C418E538214899FF00D47CC4 /* Products */,
 				BEEC2ED69814F9BF3FB5DA46 /* Pods */,
@@ -130,10 +132,9 @@
 			children = (
 				C418E53A214899FF00D47CC4 /* AppDelegate.h */,
 				C418E53B214899FF00D47CC4 /* AppDelegate.m */,
-				C418E53D214899FF00D47CC4 /* RateViewController.h */,
-				C418E53E214899FF00D47CC4 /* RateViewController.m */,
-				C49F3E7221495AAF0033AEB9 /* RateConversionViewController.h */,
-				C49F3E7321495B110033AEB9 /* RateConversionViewController.m */,
+				C457C36C2153CEA6002A6BD0 /* ViewControllers */,
+				C457C36D2153CEC3002A6BD0 /* Presenters */,
+				C457C3602153C74D002A6BD0 /* Category */,
 				C48671152148A3600008DEDA /* ConnectionService */,
 				C4070C26214CA7BF001E9A7E /* Utility */,
 				C40A6F1D214CB1DC00F5FF6B /* StoryBoard */,
@@ -154,6 +155,26 @@
 				C457C3682153CA86002A6BD0 /* UIViewController+Utility.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		C457C36C2153CEA6002A6BD0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C418E53D214899FF00D47CC4 /* RateViewController.h */,
+				C418E53E214899FF00D47CC4 /* RateViewController.m */,
+				C49F3E7221495AAF0033AEB9 /* RateConversionViewController.h */,
+				C49F3E7321495B110033AEB9 /* RateConversionViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C457C36D2153CEC3002A6BD0 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				C457C36E2153CFE8002A6BD0 /* RatePresenter.h */,
+				C457C36A2153CE96002A6BD0 /* RatePresenter.m */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 		C48671152148A3600008DEDA /* ConnectionService */ = {
@@ -290,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C457C36B2153CE96002A6BD0 /* RatePresenter.m in Sources */,
 				C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */,
 				C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */,
 				C4FAB730214D4B2A002B99EA /* UserDefault.m in Sources */,
