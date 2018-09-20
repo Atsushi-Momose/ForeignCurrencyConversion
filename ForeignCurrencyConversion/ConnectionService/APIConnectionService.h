@@ -8,8 +8,6 @@
 
 @interface APIConnectionService : NSObject
 
-//- (void) fetchContentnsInfo:(void(^)(NSDictionary *result, NSURLResponse *response, NSError *error))completionhandler;
-
 - (void)asyncRequest:(void(^)(NSMutableArray *result, NSURLResponse *response))completionhandler failure:(void(^)(NSError *))failure;
 
 @end

@@ -15,7 +15,6 @@
 @interface APIConnectionService()<NSURLSessionDelegate>
 
 @property (nonatomic) NSURLSession *sessionConnect;
-@property (nonatomic) NSMutableData *recevedData;
 
 @end
 
@@ -89,27 +88,6 @@
                                   }];
     // 通信開始
     [task resume];
-}
-
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
-didReceiveResponse:(NSURLResponse *)response
- completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
-    
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    
-    if (httpResponse.statusCode == 200) {
-        
-        completionHandler(NSURLSessionResponseAllow);   // 続ける
-        
-    } else {
-        
-        if (httpResponse.statusCode == 404 || httpResponse.statusCode == 500) {
-            
-        }
-        
-        // error.code = -999で終了メソッドが呼ばれる
-        completionHandler(NSURLSessionResponseCancel);  // 止める
-    }
 }
 
 @end

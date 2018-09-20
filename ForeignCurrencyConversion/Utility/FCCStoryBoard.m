@@ -1,5 +1,5 @@
 //
-//  UIStoryBoard.m
+//  FCCStoryBoard.m
 //  ForeignCurrencyConversion
 //
 //  Created by mmsc on 2018/09/15.
@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UIStoryBoard.h"
+#import "FCCStoryBoard.h"
 #import "RateConversionViewController.h"
 
-@implementation UIStoryBoard
+@implementation FCCStoryBoard
 
 + (id)RateConversion {
-    // SignInViewControllerのインスタンスを生成
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"RateConversionView" bundle:nil];
     RateConversionViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"RateConversion"];
     return vc;

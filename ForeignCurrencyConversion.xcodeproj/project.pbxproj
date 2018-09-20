@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		99D70DDD2E58C7E61FEC90CA /* libPods-ForeignCurrencyConversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D080C4C1456F42344798602 /* libPods-ForeignCurrencyConversion.a */; };
 		C4070C23214CA4FF001E9A7E /* RateConversionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4070C22214CA4FF001E9A7E /* RateConversionView.storyboard */; };
-		C4070C25214CA7A1001E9A7E /* UIStoryBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = C4070C24214CA7A1001E9A7E /* UIStoryBoard.m */; };
+		C4070C25214CA7A1001E9A7E /* FCCStoryBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = C4070C24214CA7A1001E9A7E /* FCCStoryBoard.m */; };
 		C418E53C214899FF00D47CC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E53B214899FF00D47CC4 /* AppDelegate.m */; };
 		C418E53F214899FF00D47CC4 /* RateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E53E214899FF00D47CC4 /* RateViewController.m */; };
 		C418E542214899FF00D47CC4 /* RateView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E540214899FF00D47CC4 /* RateView.storyboard */; };
 		C418E544214899FF00D47CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C418E543214899FF00D47CC4 /* Assets.xcassets */; };
 		C418E547214899FF00D47CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C418E545214899FF00D47CC4 /* LaunchScreen.storyboard */; };
 		C418E54A214899FF00D47CC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C418E549214899FF00D47CC4 /* main.m */; };
+		C457C3662153C8DE002A6BD0 /* UIAlertController+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C457C3652153C8DE002A6BD0 /* UIAlertController+Utility.m */; };
+		C457C3692153CA86002A6BD0 /* UIViewController+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C457C3682153CA86002A6BD0 /* UIViewController+Utility.m */; };
 		C463FB1B214D61A700216A0A /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C463FB1A214D61A700216A0A /* Utility.m */; };
 		C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C48671172148A3E70008DEDA /* APIConnectionService.m */; };
 		C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49F3E7321495B110033AEB9 /* RateConversionViewController.m */; };
@@ -26,8 +28,8 @@
 		34917204AACD3E9833CAEAB3 /* Pods-ForeignCurrencyConversion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForeignCurrencyConversion.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForeignCurrencyConversion/Pods-ForeignCurrencyConversion.release.xcconfig"; sourceTree = "<group>"; };
 		3D080C4C1456F42344798602 /* libPods-ForeignCurrencyConversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ForeignCurrencyConversion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4070C22214CA4FF001E9A7E /* RateConversionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RateConversionView.storyboard; sourceTree = "<group>"; };
-		C4070C24214CA7A1001E9A7E /* UIStoryBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIStoryBoard.m; sourceTree = "<group>"; };
-		C4070C27214CA7F1001E9A7E /* UIStoryBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIStoryBoard.h; sourceTree = "<group>"; };
+		C4070C24214CA7A1001E9A7E /* FCCStoryBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCCStoryBoard.m; sourceTree = "<group>"; };
+		C4070C27214CA7F1001E9A7E /* FCCStoryBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCCStoryBoard.h; sourceTree = "<group>"; };
 		C418E537214899FF00D47CC4 /* ForeignCurrencyConversion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForeignCurrencyConversion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C418E53A214899FF00D47CC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C418E53B214899FF00D47CC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -38,6 +40,10 @@
 		C418E546214899FF00D47CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C418E548214899FF00D47CC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C418E549214899FF00D47CC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C457C3642153C8DE002A6BD0 /* UIAlertController+Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Utility.h"; sourceTree = "<group>"; };
+		C457C3652153C8DE002A6BD0 /* UIAlertController+Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Utility.m"; sourceTree = "<group>"; };
+		C457C3672153CA86002A6BD0 /* UIViewController+Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Utility.h"; sourceTree = "<group>"; };
+		C457C3682153CA86002A6BD0 /* UIViewController+Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utility.m"; sourceTree = "<group>"; };
 		C463FB19214D61A700216A0A /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		C463FB1A214D61A700216A0A /* Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		C48671162148A3CF0008DEDA /* APIConnectionService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIConnectionService.h; sourceTree = "<group>"; };
@@ -81,8 +87,8 @@
 		C4070C26214CA7BF001E9A7E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				C4070C27214CA7F1001E9A7E /* UIStoryBoard.h */,
-				C4070C24214CA7A1001E9A7E /* UIStoryBoard.m */,
+				C4070C27214CA7F1001E9A7E /* FCCStoryBoard.h */,
+				C4070C24214CA7A1001E9A7E /* FCCStoryBoard.m */,
 				C4FAB72E214D4B2A002B99EA /* UserDefault.h */,
 				C4FAB72F214D4B2A002B99EA /* UserDefault.m */,
 				C463FB19214D61A700216A0A /* Utility.h */,
@@ -103,6 +109,7 @@
 		C418E52E214899FF00D47CC4 = {
 			isa = PBXGroup;
 			children = (
+				C457C3602153C74D002A6BD0 /* Category */,
 				C418E539214899FF00D47CC4 /* ForeignCurrencyConversion */,
 				C418E538214899FF00D47CC4 /* Products */,
 				BEEC2ED69814F9BF3FB5DA46 /* Pods */,
@@ -136,6 +143,17 @@
 				C418E549214899FF00D47CC4 /* main.m */,
 			);
 			path = ForeignCurrencyConversion;
+			sourceTree = "<group>";
+		};
+		C457C3602153C74D002A6BD0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C457C3642153C8DE002A6BD0 /* UIAlertController+Utility.h */,
+				C457C3652153C8DE002A6BD0 /* UIAlertController+Utility.m */,
+				C457C3672153CA86002A6BD0 /* UIViewController+Utility.h */,
+				C457C3682153CA86002A6BD0 /* UIViewController+Utility.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		C48671152148A3600008DEDA /* ConnectionService */ = {
@@ -275,11 +293,13 @@
 				C48671182148A3E70008DEDA /* APIConnectionService.m in Sources */,
 				C49F3E7421495B110033AEB9 /* RateConversionViewController.m in Sources */,
 				C4FAB730214D4B2A002B99EA /* UserDefault.m in Sources */,
-				C4070C25214CA7A1001E9A7E /* UIStoryBoard.m in Sources */,
+				C4070C25214CA7A1001E9A7E /* FCCStoryBoard.m in Sources */,
 				C463FB1B214D61A700216A0A /* Utility.m in Sources */,
 				C418E53F214899FF00D47CC4 /* RateViewController.m in Sources */,
 				C418E54A214899FF00D47CC4 /* main.m in Sources */,
+				C457C3692153CA86002A6BD0 /* UIViewController+Utility.m in Sources */,
 				C418E53C214899FF00D47CC4 /* AppDelegate.m in Sources */,
+				C457C3662153C8DE002A6BD0 /* UIAlertController+Utility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

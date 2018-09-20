@@ -10,9 +10,10 @@
 #import "APIConnectionService.h"
 #import <SVProgressHUD.h>
 #import "RateConversionViewController.h"
-#import "UIStoryBoard.h"
+#import "FCCStoryBoard.h"
 #import "UserDefault.h"
 #import "Utility.h"
+#import "UIAlertController+Utility.h"
 
 #define PICKER_ROW_HEIGHT 50
 
@@ -81,7 +82,7 @@
            
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             NSString *statusCode = [NSString stringWithFormat:@"statusCode %ld", (long)httpResponse.statusCode];
-            [Utility showAlertController:@"通信エラー" message:statusCode];
+            [[UIAlertController new] showAlertController:@"通信エラー" message:statusCode];
         }
         
         [SVProgressHUD dismiss];
@@ -89,7 +90,7 @@
      
     failure:^(NSError *error) {
         [SVProgressHUD dismiss];
-        [Utility showAlertController:@"Error" message:error.localizedDescription];
+        [[UIAlertController new] showAlertController:@"Error" message:error.localizedDescription];
     }];
 }
 
@@ -285,7 +286,7 @@
 }
 
 - (IBAction)nextAction:(id)sender {
-    RateConversionViewController *vc = [UIStoryBoard RateConversion];
+    RateConversionViewController *vc = [FCCStoryBoard RateConversion];
     vc.currencyInfoList = [self sortCurrencyInfoList];
     vc.selectedCurrency = _selectedCurrency;
     [self.navigationController pushViewController:vc animated:YES];

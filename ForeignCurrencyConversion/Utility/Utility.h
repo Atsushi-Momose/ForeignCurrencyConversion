@@ -11,8 +11,6 @@
 
 @interface Utility: NSObject
 
-+ (void)showAlertController:(NSString *)titleText message:(NSString *)messageText;
-
 + (void)showMask;
 
 + (void)maskDismiss;

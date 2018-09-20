@@ -7,50 +7,25 @@
 //
 
 #import "Utility.h"
-
+#import "UIViewController+Utility.h"
 @implementation Utility
-
-+ (void)showAlertController:(NSString *)titleText message:(NSString *)messageText {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:titleText
-                                                                             message:messageText
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    
-    // Cancel用のアクションを生成
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"閉じる"
-                                                           style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-       [Utility maskDismiss];
-    }];
-    
-    [alertController addAction:cancelAction];
-    
-    [[Utility currentViewController] presentViewController:alertController animated:YES completion:nil];
-}
-
-// 最前面（現在表示中）のViewControllerを取得
-+ (UIViewController *)currentViewController {
-    
-    // Find best view controller
-    UIViewController *viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    return  viewController;
-}
 
 + (void)showMask {
     
-    UIViewController *currentViewController = [Utility currentViewController];
+    UIViewController *topViewController = [UIViewController topViewController];
     
     UIView *view = [UIView new];
-    view.frame = currentViewController.view.frame;
+    view.frame = topViewController.view.frame;
     view.backgroundColor = [UIColor whiteColor];
     view.tag = 99;
     
-    [currentViewController.view addSubview:view];
+    [topViewController.view addSubview:view];
 }
 
 + (void)maskDismiss {
-    UIViewController *currentViewController = [Utility currentViewController];
+    UIViewController *topViewController = [UIViewController topViewController];
     
-    UIView *view = currentViewController.view;
+    UIView *view = topViewController.view;
     
     UIView *mask = [view viewWithTag:99];
     
@@ -58,11 +33,8 @@
 }
 
 + (NSString *)getValueUpToFiveDecimal:(double)value {
-    NSString *valueStr = [NSString stringWithFormat:@"%f", value];
-    float fValue = [valueStr floatValue];
-    NSString *result = [NSString stringWithFormat:@"%.5f", fValue];
-    return result;
+    float fValue = [[NSString stringWithFormat:@"%f", value] floatValue];
+    return [NSString stringWithFormat:@"%.5f", fValue];
 }
-
 
 @end

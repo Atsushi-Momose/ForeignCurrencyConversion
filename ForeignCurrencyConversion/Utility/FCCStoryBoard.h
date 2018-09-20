@@ -1,5 +1,5 @@
 //
-//  UIStoryBoard.h
+//  FCCStoryBoard.h
 //  ForeignCurrencyConversion
 //
 //  Created by mmsc on 2018/09/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIStoryBoard: NSObject
+@interface FCCStoryBoard: NSObject
 
 + (id)RateConversion;
 
